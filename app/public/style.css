@@ -1,0 +1,40 @@
+body {
+    background-color:#303030;
+    text-align: left;
+    color: white;
+    font-family:'Futura' 
+}
+
+header {
+    inherits: body;
+    text-align: center;
+}
+
+a {
+    color:gold
+}
+
+.dataViewTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.dataViewTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.dataViewTable tr:nth-child(even){background-color: rgb(96, 96, 96);}
+
+.dataViewTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.dataViewButton {
+    font-family: Futura;
+    color: gray;
+}
