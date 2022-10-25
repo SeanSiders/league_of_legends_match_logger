@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `summoners` (
   `id_summoner` VARCHAR(45) NOT NULL,
   `name` VARCHAR(100) NULL,
   PRIMARY KEY (`id_summoner`))
-ENGINE = InnoDB
+ENGINE = mysql;
 DEFAULT CHARACTER SET = DEFAULT;
 
 
