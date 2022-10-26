@@ -3,7 +3,9 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>League of Legends Match Logger</title>
+    <title>Homepage for League</title>
+<!-- <script type="text/javascript" src="code.js"></script>-->
+
 </head>
 
 <header>
@@ -12,110 +14,26 @@
 </header>
 
 <body>
-    <h2>Match Data</h2>
-    <hr>
+    <div id="entrance">
+        <h1>Welcome to our project</h1>
+        <p>Choose your favorite champion (or select random)</p>
+        <form action="champions.html" method="get">
+            <input type="text">
+            <input type="submit" method="get" action="champions.html">
+        </form>
 
-    <h3>Matches</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='matches' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-            <th>Reporting Summoner</th>
-            <th>Red Team</th>
-            <th>Blue Team</th>
-            <th>Winning Team</th>
-            <th>Match Duration (s)</th>
-        </tr>
-    </table>
+        <br>
+        <p> View the most recent match history </p>
+        <form action="match.html" method="get">
+            <input type="submit">
+        </form>
+        <p> View an overview </p>
+        <form action="overview.html" method="get">
+            <input type="submit">
+        </form>
+    </div>
 
-    <h3>Teams</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='teams' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-            <th>Total Gold Earned</th>
-            <th>Champion 1</th>
-            <th>Champion 2</th>
-            <th>Champion 3</th>
-            <th>Champion 4</th>
-            <th>Champion 5</th>
-        </tr>
-    </table>
 
-    <h3>Monsters Slain</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='monstersSlain' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-            <th>Monster</th>
-            <th>Team</th>
-        </tr>
-    </table>
-
-    <h3>Summoners</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='summoners' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
-    </table>
-
-    <h3>Played Champions</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='playedChampions' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-            <th>Champion</th>
-            <th>Summoner</th>
-            <th>Item 1</th>
-            <th>Item 2</th>
-            <th>Item 3</th>
-            <th>Item 4</th>
-            <th>Item 5</th>
-            <th>Item 6</th>
-        </tr>
-    </table>
-
-    <h2>Static Game Data</h2>
-    <hr>
-    <h3>Champions</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='champions' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-        </tr>
-    </table>
-
-    <h3>Skills</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='skills' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-    </table>
-
-    <h3>Items</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='items' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Cost (Gold)</th>
-        </tr>
-    </table>
-
-    <h3>Monsters</h3>
-    <button class='dataViewButton'>Add</button>
-    <table id='monsters' class='dataViewTable'>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Buff</th>
-        </tr>
-    </table>
 </body>
 
 </html>
