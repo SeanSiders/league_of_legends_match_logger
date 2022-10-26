@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Champions for League</title>
+</head>
+
+<header>
+    <h1>Champions</h1>
+    <link rel='stylesheet' href='style.css'>
+</header>
+
+<body>
+
+    <h2>Aatrox {champions.name}</h2>
+    <table id='champions' class='dataViewTable'>
+        <tr>
+            <th>Name</th>
+            <th>Difficulty Level</th>
+            <th>Ban Rate</th>
+            <th>Pick Rate</th>
+            <th>Win Rate</th>
+        </tr>
+        <tr>
+            <td>{champions.name}</td>
+            <td>{champions.difficulty_level}</td>
+            <td>{champions.ban_rate}</td>
+            <td>{champions.pick_rate}</td>
+            <td>{champions.win_rate}</td>
+        </tr>  
+    </table>
+    <br><br>
+    <h2>{champions.name} skills</h2>
+        <table id='skills' class='dataViewTable'>
+
+        <tr>
+            <td>Q</td>
+            <td>{id_skill.name}</td>
+            <td>{id_skill.description}</td>
+        </tr>
+        <tr>
+            <td>W</td>
+            <td>{id_skill.name}</td>
+            <td>{id_skill.description}</td>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>{id_skill.name}</td>
+            <td>{id_skill.description}</td>
+        </tr>
+        <tr>
+            <td>R</td>
+            <td>{id_skill.name}</td>
+            <td>{id_skill.description}</td>
+        </tr>
+        <tr>
+            <td>P</td>
+            <td>{id_skill.name}</td>
+            <td>{id_skill.description}</td>
+        </tr>
+
+        </table>
+        <br></br>
+        <form action="index.html" method="get">
+            <label for="difficulty_level">Edit Difficulty Level:</label>
+            <select name="difficulty_level" size="3">
+                <option value="1">Easy</option>
+                <option value="2">Medium</option>
+                <option value="3">Hard</option>
+            </select>
+            <label for="ban_rate">Edit Ban Rate:</label>
+                <input type="number">
+            <label for="pick_rate">Edit Pick Rate:</label>
+                <input type="number">
+            <label for="win_rate">Edit Win Rate:</label>
+                <input type="number">
+            <input type="submit">
+        </form>
+
+</body>
+</html>

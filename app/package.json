@@ -1,7 +1,7 @@
 {
   "name": "league_of_legends_match_logger",
   "version": "1.0.0",
-  "type": "module",
+  "type": "commonjs",
   "description": " A collaborative project made alongside Oregon State University's CS340 curriculum.",
   "main": "index.js",
   "scripts": {
@@ -20,8 +20,10 @@
   "homepage": "https://github.com/SeanSiders/league_of_legends_match_logger#readme",
   "dependencies": {
     "express": "^4.18.2",
+    "forever": "^4.0.3",
     "mysql": "^2.18.1",
     "nodaemon": "^0.0.5",
     "nodemon": "^2.0.20"
-  }
+  },
+  "devDependencies": {}
 }

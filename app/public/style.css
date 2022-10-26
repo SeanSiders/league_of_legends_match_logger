@@ -2,7 +2,10 @@ body {
     background-color:#303030;
     text-align: left;
     color: white;
-    font-family:'Futura' 
+    font-family:'Futura';
+    margin-left: 100px;
+    margin-right: 100px; 
+
 }
 
 header {
@@ -11,9 +14,14 @@ header {
 }
 
 a {
-    color:gold
+    color:gold;
 }
-
+#entrance {
+    margin: 0 auto;
+}
+ h2 {
+    margin: auto;
+ }
 .dataViewTable {
     border-collapse: collapse;
     width: 100%;

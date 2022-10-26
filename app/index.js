@@ -1,9 +1,7 @@
 'use strict';
-import express from 'express';
-
-const PORT = 3000;
-
-const app = express();
+const express = require('express');
+var PORT = 3000;
+var app = express();
 
 //Automatically decode the URL in POST methods
 app.use(express.urlencoded({
@@ -18,6 +16,14 @@ app.get('/', (req, res) => {
 
 app.get('/home', (req, res) => {
     res.sendFile('/home.html');
+});
+
+app.get('/champions', (req, res) => {
+    res.sendFile('/champions.html');
+});
+
+app.get('/match', (req, res) => {
+    res.sendFile('/match.html');
 });
 
 app.listen(PORT, () => {
