@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
     res.sendFile('/index.html');
 });
 
-app.get('/home', (req, res) => {
-    res.sendFile('/home.html');
+app.get('/overview', (req, res) => {
+    res.sendFile('/overview.html');
 });
 
 app.get('/champions', (req, res) => {
