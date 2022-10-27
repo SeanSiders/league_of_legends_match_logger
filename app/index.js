@@ -1,8 +1,10 @@
 'use strict';
 const express = require('express');
-const sql = require('./sql');
+const db = require('./sql');
 
-var PORT = 3000;
+// console.log(sql.pool);
+
+var PORT = 3090;
 var app = express();
 
 //var sql = require('./code');
@@ -41,4 +43,11 @@ app.get('/match', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}...`);
     console.log('hello');
+});
+
+app.get('/sqltime', (req, res) => {
+
+    db.pool.query('SELECT * FROM teams', function(err, results, fields){
+    res.send(results);
+  });
 });
