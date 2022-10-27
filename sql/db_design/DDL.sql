@@ -1,62 +1,174 @@
-/* INSERT TEMPLATES
+-- MySQL Workbench Forward Engineering
 
--- CHAMPION
-INSERT INTO skills (name, description)
-VALUES
-('', ''),
-('', ''),
-('', ''),
-('', ''),
-('', '');
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-INSERT INTO champions (id_champion, name, difficulty_level, ban_rate, pick_rate, win_rate, id_skill_P, id_skill_Q, id_skill_W, id_skill_E, id_skill_R)
-VALUES(
-    '',
-    '', 
-    '', 
-    0.00, 
-    0.00, 
-    0.00,
-    (SELECT id_skill FROM skills WHERE name = ''),
-    (SELECT id_skill FROM skills WHERE name = ''),
-    (SELECT id_skill FROM skills WHERE name = ''),
-    (SELECT id_skill FROM skills WHERE name = ''),
-    (SELECT id_skill FROM skills WHERE name = '')
-);
-
--- SUMMONERS
-INSERT INTO summoners (id_summoner, name)
-VALUES
-('', ''),
-('', ''),
-('', ''),
-('', ''),
-('', '');
+-- -----------------------------------------------------
+-- Table skills
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS skills (
+  id_skill INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(45) NOT NULL,
+  description VARCHAR(500) NOT NULL,
+  PRIMARY KEY (id_skill),
+  UNIQUE INDEX name_UNIQUE (name ASC) VISIBLE)
+ENGINE = InnoDB;
 
 
--- TEAM
-INSERT INTO teams () VALUES ();
+-- -----------------------------------------------------
+-- Table champions
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS champions (
+  id_champion VARCHAR(45) NOT NULL,
+  name VARCHAR(45) NOT NULL,
+  difficulty_level VARCHAR(10) NOT NULL,
+  ban_rate DECIMAL(5,2) NOT NULL,
+  pick_rate DECIMAL(5,2) NOT NULL,
+  win_rate DECIMAL(5,2) NOT NULL,
+  id_skill_P INT NOT NULL,
+  id_skill_Q INT NOT NULL,
+  id_skill_W INT NOT NULL,
+  id_skill_E INT NOT NULL,
+  id_skill_R INT NOT NULL,
+  PRIMARY KEY (id_champion),
+  INDEX fk_skill_P (id_skill_P ASC) VISIBLE,
+  INDEX fk_skill_Q (id_skill_Q ASC) VISIBLE,
+  INDEX fk_skill_W (id_skill_W ASC) VISIBLE,
+  INDEX fk_skill_E (id_skill_E ASC) VISIBLE,
+  INDEX fk_skill_R (id_skill_R ASC) VISIBLE,
+  UNIQUE INDEX name_UNIQUE (name ASC) VISIBLE,
+  CONSTRAINT fk_champions_skills1
+    FOREIGN KEY (id_skill_P)
+    REFERENCES skills (id_skill)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_champions_skills2
+    FOREIGN KEY (id_skill_Q)
+    REFERENCES skills (id_skill)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_champions_skills3
+    FOREIGN KEY (id_skill_W)
+    REFERENCES skills (id_skill)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_champions_skills4
+    FOREIGN KEY (id_skill_E)
+    REFERENCES skills (id_skill)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_champions_skills5
+    FOREIGN KEY (id_skill_R)
+    REFERENCES skills (id_skill)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('', '');
-UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
-WHERE id_team = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('', '');
-UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
-WHERE id_team = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
+-- -----------------------------------------------------
+-- Table summoners
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS summoners (
+  id_summoner VARCHAR(45) NOT NULL,
+  name VARCHAR(100) NULL,
+  PRIMARY KEY (id_summoner))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = DEFAULT;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('', '');
-UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
-WHERE id_team = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('', '');
-UPDATE teams SET id_played_champion_4 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
-WHERE id_team = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
+-- -----------------------------------------------------
+-- Table played_champions
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS played_champions (
+  id_played_champion INT NOT NULL AUTO_INCREMENT,
+  id_champion VARCHAR(45) NOT NULL,
+  id_summoner VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id_played_champion),
+  INDEX fk_champion (id_champion ASC) VISIBLE,
+  INDEX fk_summoner (id_summoner ASC) VISIBLE,
+  CONSTRAINT fk_id_champion
+    FOREIGN KEY (id_champion)
+    REFERENCES champions (id_champion)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_played_champions_summoners1
+    FOREIGN KEY (id_summoner)
+    REFERENCES summoners (id_summoner)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('', '');
-UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
-WHERE id_team = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
-*/
+
+-- -----------------------------------------------------
+-- Table teams
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS teams (
+  id_team INT NOT NULL AUTO_INCREMENT,
+  total_gold_earned INT NULL,
+  id_played_champion_1 INT NULL,
+  id_played_champion_2 INT NULL,
+  id_played_champion_3 INT NULL,
+  id_played_champion_4 INT NULL,
+  id_played_champion_5 INT NULL,
+  PRIMARY KEY (id_team),
+  INDEX fk_played_champion_1 (id_played_champion_1 ASC) VISIBLE,
+  INDEX fk_played_champion_2 (id_played_champion_2 ASC) VISIBLE,
+  INDEX fk_played_champion_3 (id_played_champion_3 ASC) VISIBLE,
+  INDEX fk_played_champion_4 (id_played_champion_4 ASC) VISIBLE,
+  INDEX fk_played_champion_5 (id_played_champion_5 ASC) VISIBLE,
+  CONSTRAINT fk_teams_played_champions1
+    FOREIGN KEY (id_played_champion_1)
+    REFERENCES played_champions (id_played_champion)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_teams_played_champions2
+    FOREIGN KEY (id_played_champion_2)
+    REFERENCES played_champions (id_played_champion)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_teams_played_champions3
+    FOREIGN KEY (id_played_champion_3)
+    REFERENCES played_champions (id_played_champion)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_teams_played_champions4
+    FOREIGN KEY (id_played_champion_4)
+    REFERENCES played_champions (id_played_champion)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_teams_played_champions5
+    FOREIGN KEY (id_played_champion_5)
+    REFERENCES played_champions (id_played_champion)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table matches
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS matches (
+  id_match INT NOT NULL AUTO_INCREMENT,
+  id_team_red INT NOT NULL,
+  id_team_blue INT NOT NULL,
+  winning_team VARCHAR(4) NOT NULL,
+  match_duration_seconds INT NOT NULL,
+  PRIMARY KEY (id_match),
+  INDEX fk_team_red (id_team_red ASC) VISIBLE,
+  INDEX fk_team_blue (id_team_blue ASC) VISIBLE,
+  CONSTRAINT fk_real_match_info_teams1
+    FOREIGN KEY (id_team_red)
+    REFERENCES teams (id_team)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_real_match_info_teams2
+    FOREIGN KEY (id_team_blue)
+    REFERENCES teams (id_team)
+    ON DELETE NO ACTION
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 -- LEAGUE OF LEGENDS STATIC GAME DATA
@@ -209,49 +321,6 @@ VALUES (
     (SELECT id_skill FROM skills WHERE name = 'Chum the Waters')
 );
 
--- LEAGUE MONSTERS
--- https://leagueoflegends.fandom.com/wiki/Category:Summoner%27s_Rift_monsters
--- TODO fill out buff attributes
-
-INSERT INTO league_monsters (name, buff)
-VALUES
-('Ancient Krug', ''),
-('Baron Nashor', ''),
-('Blue Sentinel', ''),
-('Chemtech Drake', ''),
-('Cloud Drake', ''),
-('Crimson Raptor', ''),
-('Elder Dragon', ''),
-('Greater Murk Wolf', ''),
-('Gromp', ''),
-('Hextech Drake', ''),
-('Infernal Drake', ''),
-('Krug camp', ''),
-('Mini Krug', ''),
-('Mountain Drake', ''),
-('Murk Wolf camp', ''),
-('Ocean Drake', ''),
-('Raptor camp', ''),
-('Red Brambleback', ''),
-('Rift Herald', ''),
-('Rift Scuttler', ''),
-('Rift Scuttler camp', '');
-
--- ITEMS
--- https://leagueoflegends.fandom.com/wiki/Item_(League_of_Legends)
-
-INSERT INTO items (name, cost_gold)
-VALUES
-('Black Spear', 0),
-('Cull', 450),
-('Dark Seal', 350),
-('Doran''s Blade', 450),
-('Doran''s Ring', 400),
-('Doran''s Shield', 450),
-('Ember Knife', 350),
-('Guardian''s Blade', 950),
-('Guardian''s Hammer', 950);
-
 -------------------------------------------------------------------------------------------------------------------------------------------------
 -- SAMPLE DATA
 -------------------------------------------------------------------------------------------------------------------------------------------------
@@ -269,13 +338,11 @@ VALUES
 INSERT INTO teams (total_gold_earned) VALUES (52387);
 SET @id_team_blue = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
-INSERT INTO played_champions (id_champion, id_summoner, id_item_1)
-VALUES ('fizz', 'Faker', (SELECT id_item from items WHERE name = 'Ember Knife'));
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker');
 UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner, id_item_1) 
-VALUES ('twitch', 'Gumayusi', (SELECT id_item from items WHERE name = 'Doran''s Ring'));
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Gumayusi');
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
@@ -290,15 +357,6 @@ WHERE id_team = @id_team_blue;
 INSERT INTO played_champions (id_champion, id_summoner) VALUES ('akali', 'Asper');
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
-
--- BLUE TEAM SLAIN MONSTERS
-INSERT INTO slain_league_monsters(id_league_monster, id_team)
-VALUES
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Rift Herald'), @id_team_blue),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Krug camp'), @id_team_blue),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Gromp'), @id_team_blue),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Elder Dragon'), @id_team_blue),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Baron Nashor'), @id_team_blue);
 
 -- RED TEAM
 INSERT INTO teams (total_gold_earned) VALUES (29927);
@@ -324,31 +382,19 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker')
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
--- RED TEAM SLAIN MONSTERS
-INSERT INTO slain_league_monsters(id_league_monster, id_team)
-VALUES
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Rift Scuttler camp'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Ancient Krug'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Murk Wolf camp'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Mountain Drake'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Raptor camp'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Red Brambleback'), @id_team_red);
-
 -- MATCH 1 
-INSERT INTO matches (id_reporting_summoner, id_team_red, id_team_blue, winning_team, match_duration_seconds)
-VALUES ('Faker', @id_team_red, @id_team_blue, 'blue', 1721);
+INSERT INTO matches (id_team_red, id_team_blue, winning_team, match_duration_seconds)
+VALUES (@id_team_red, @id_team_blue, 'blue', 1721);
 
 -- BLUE TEAM
 INSERT INTO teams (total_gold_earned) VALUES (71433);
 SET @id_team_blue = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
-INSERT INTO played_champions (id_champion, id_summoner, id_item_1)
-VALUES ('fizz', 'Gumayusi', (SELECT id_item from items WHERE name = 'Cull'));
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Gumayusi');
 UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner, id_item_1) 
-VALUES ('twitch', 'Faker', (SELECT id_item from items WHERE name = 'Ember Knife'));
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Faker');
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
@@ -363,15 +409,6 @@ WHERE id_team = @id_team_blue;
 INSERT INTO played_champions (id_champion, id_summoner) VALUES ('akali', 'Keria');
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
-
--- BLUE TEAM SLAIN MONSTERS
-INSERT INTO slain_league_monsters(id_league_monster, id_team)
-VALUES
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Rift Herald'), @id_team_blue),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Krug camp'), @id_team_blue),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Gromp'), @id_team_blue),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Baron Nashor'), @id_team_blue),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Baron Nashor'), @id_team_blue);
 
 -- RED TEAM
 INSERT INTO teams (total_gold_earned) VALUES (90000);
@@ -397,20 +434,14 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker')
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
--- RED TEAM SLAIN MONSTERS
-INSERT INTO slain_league_monsters(id_league_monster, id_team)
-VALUES
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Mountain Drake'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Raptor camp'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Raptor camp'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Raptor camp'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Raptor camp'), @id_team_red),
-((SELECT id_league_monster FROM league_monsters WHERE NAME = 'Red Brambleback'), @id_team_red);
-
 -- MATCH 2 
-INSERT INTO matches (id_reporting_summoner, id_team_red, id_team_blue, winning_team, match_duration_seconds)
-VALUES ('Gumayusi', @id_team_red, @id_team_blue, 'red', 1699);
+INSERT INTO matches (id_team_red, id_team_blue, winning_team, match_duration_seconds)
+VALUES (@id_team_red, @id_team_blue, 'red', 1699);
 
 -- MATCH 3
-INSERT INTO matches (id_reporting_summoner, id_team_red, id_team_blue, winning_team, match_duration_seconds)
-VALUES ('Keria', @id_team_red, @id_team_blue, 'blue', 1901);
+INSERT INTO matches (id_team_red, id_team_blue, winning_team, match_duration_seconds)
+VALUES (@id_team_red, @id_team_blue, 'blue', 1901);
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

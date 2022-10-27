@@ -1,11 +1,8 @@
 SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE matches;
 DROP TABLE teams;
-DROP TABLE league_monsters;
-DROP TABLE slain_league_monsters;
 DROP TABLE summoners;
 DROP TABLE played_champions;
-DROP TABLE items;
 DROP TABLE champions;
 DROP TABLE skills;
 SET FOREIGN_KEY_CHECKS = 1;
