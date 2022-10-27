@@ -15,6 +15,70 @@
     <div id="entrance">
         <h1>Match Summary </h1>
     </div>
+    <table>
+        <tr>
+            <th>Team</th>
+            <th>Won Game</th>
+            <th>Total Gold</th>
+            <th>Champion #1</th>
+            <th>Champion #2</th>
+            <th>Champion #3</th>
+            <th>Champion #4</th>
+            <th>Champion #5</th>
+        </tr>
+        <tr>
+            <td>Red</td>
+            <td>{teams.total_gold_earned}</td>
+            <td>{matches.winning_team}</td>
+            <td>{champions.name}</td>
+            <td>{champions.name}</td>
+            <td>{champions.name}</td>
+            <td>{champions.name}</td>
+            <td>{champions.name}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{summoner.name}</td>
+            <td>{summoner.name}</td>
+            <td>{summoner.name}</td>
+            <td>{summoner.name}</td>
+            <td>{summoner.name}</td>
+        </tr>
+        <tr><td><br></td></tr>
+        <tr><td><br></td></tr>
+        <tr>
+            <td>Blue</td>
+            <td>{teams.total_gold_earned}</td>
+            <td>{matches.winning_team}</td>
+            <td>{champions.name}</td>
+            <td>{champions.name}</td>
+            <td>{champions.name}</td>
+            <td>{champions.name}</td>
+            <td>{champions.name}</td> 
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{summoner.name}</td>
+            <td>{summoner.name}</td>
+            <td>{summoner.name}</td>
+            <td>{summoner.name}</td>
+            <td>{summoner.name}</td>
+        </tr>
+
+    </table>
+    <br>
+    <p> Delete this match </p>
+        <form action="match.html" method="get">
+            <input type="submit">
+        </form>
+    <p> Return to the homepage </p>
+        <form action="index.html" method="get">
+            <input type="submit">
+        </form>
 
 
 </body>
