@@ -1,9 +1,11 @@
 'use strict';
 const express = require('express');
-var bodyParser = require("body-parser");
+const sql = require('./sql');
 
 var PORT = 3000;
 var app = express();
+
+//var sql = require('./code');
 
 //Automatically decode the URL in POST methods
 app.use(express.urlencoded({

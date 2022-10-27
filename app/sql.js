@@ -1,30 +1,18 @@
-// import user from '.config';
-import express from "express";
-// const express = require('express');
-var app = express();
-import mysql from "mysql";
+'use strict';
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password!',
-  database: 'database'
-});
+const config = require('./config');
+// Get an instance of mysql we can use in the app
+const mysql = require('mysql');
 
-connection.connect((err) => {
-    if (err) throw err;
-  console.log('Connected!');
-});
+// Create a 'connection pool' using the provided credentials
+var pool = mysql.createPool({
+    connectionLimit : 10,
+    host            : 'classmysql.engr.oregonstate.edu',
+    user            : 'cs340_' + config.user ,
+    password        :  config.password,
+    database        : 'cs340_' + config.unid
+})
 
-app.get("/createdb", (req, res) => {
+// Export it for use in our application
 
-    let sql = "CREATE DATABASE nodemysql";
-    db.query(sql, (err) => {
-      if (err) {
-        throw err;
-      }
-      res.send("Database created");
-  
-    });
-  
-  });
+exports.pool = pool;
