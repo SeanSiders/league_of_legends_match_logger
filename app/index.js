@@ -2,12 +2,10 @@
 const express = require('express');
 const db = require('./sql');
 
-// console.log(sql.pool);
+//console.log(db.pool);
 
-var PORT = 3090;
-var app = express();
-
-//var sql = require('./code');
+const PORT = 3090;
+const app = express();
 
 //Automatically decode the URL in POST methods
 app.use(express.urlencoded({
