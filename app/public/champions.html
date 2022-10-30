@@ -3,16 +3,16 @@
 
 <head>
     <meta charset='utf-8'>
-    <title>Champions for League</title>
+    <title>League of Legends Champions</title>
 </head>
 
 <header>
-    <h1>Champions</h1>
-    <link rel='stylesheet' href='style.css'>
+    <h1>League of Legends Champions</h1>
+    <link rel='stylesheet' href='style.css' type='text/css'/>
+    <script type='text/javascript' src='nav_bar.js'></script>
 </header>
 
 <body>
-
     <h2>Aatrox {champions.name}</h2>
     <table id='champions' class='dataViewTable'>
         <tr>
@@ -62,20 +62,20 @@
 
         </table>
         <br></br>
-        <form action="index.html" method="get">
-            <label for="difficulty_level">Edit Difficulty Level:</label>
-            <select name="difficulty_level" size="3">
-                <option value="1">Easy</option>
-                <option value="2">Medium</option>
-                <option value="3">Hard</option>
+        <form action='index.html' method='get'>
+            <label for='difficulty_level'>Edit Difficulty Level:</label>
+            <select name='difficulty_level' size='3'>
+                <option value='1'>Easy</option>
+                <option value='2'>Medium</option>
+                <option value='3'>Hard</option>
             </select>
-            <label for="ban_rate">Edit Ban Rate:</label>
-                <input type="number">
-            <label for="pick_rate">Edit Pick Rate:</label>
-                <input type="number">
-            <label for="win_rate">Edit Win Rate:</label>
-                <input type="number">
-            <input type="submit">
+            <label for='ban_rate'>Edit Ban Rate:</label>
+                <input type='number'>
+            <label for='pick_rate'>Edit Pick Rate:</label>
+                <input type='number'>
+            <label for='win_rate'>Edit Win Rate:</label>
+                <input type='number'>
+            <input type='submit'>
         </form>
 
 </body>

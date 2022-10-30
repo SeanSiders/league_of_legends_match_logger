@@ -7,16 +7,12 @@ const password = '7107';
 const mysql = require('mysql');
 
 // Create a 'connection pool' using the provided credentials
-var pool = mysql.createPool({
+const pool = mysql.createPool({
     connectionLimit : 10,
     host            : 'classmysql.engr.oregonstate.edu',
     user            : 'cs340_' + user,
     password        :  password,
     database        : 'cs340_' + user
-})
-
-// Export it for use in our application
-
-
+});
 
 module.exports.pool = pool;
