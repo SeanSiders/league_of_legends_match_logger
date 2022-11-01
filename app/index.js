@@ -49,7 +49,7 @@ app.get('/champions', (req, res) => {
     );
 });
 
-app.get('/matches', (req, res) => {
+app.get('/matches.html', (req, res) => {
     res.render('pages/matches');
 });
 

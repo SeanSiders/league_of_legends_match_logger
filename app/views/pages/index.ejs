@@ -8,12 +8,49 @@
 </head>
 
 <header>
-    <h1>League of Legends Match Logger</h1>
-    <h4>By Sean Siders and Jeremy Steele</h4>
+    <h1>League of Legends Database</h1>
     <%- include('../components/nav_bar'); %>
 </header>
 
 <body>
+    <h1>Welcome to the League of Legends project</h1>
+    <p>View all Champions</p>
+    <form action="champions.html" method="get">
+        <input type="submit" value="submit">
+    </form>
+    <p>Choose your favorite champion or select random</p>
+    <form action="champions.html" method="get">
+        <input type="text" name="champion">
+        <input type="submit" value="submit">
+    </form>
+    <Br>
+    <form action="edit_champion" method="get">
+        <input type="submit" value="Random">
+    </form>
+
+    <br>
+    <p>View your favorite player</p>
+    <form action="summoner.html" method="get">
+        <input type="text">
+        <input type="submit" method="get" action="champions.html">
+    </form>
+    <br>
+
+    <p> View the most recent match history </p>
+    <form action="match.html" method="get">
+        <input type="submit">
+    </form>
+    <p> View an overview </p>
+    <form action="overview.html" method="get">
+        <input type="submit">
+    </form>
+
+    <br>
+
 </body>
+<br>
+<footer>
+    <h3>By Jeremy Steele and Sean Siders for CS 340</h3>
+</footer>
 
 </html>
