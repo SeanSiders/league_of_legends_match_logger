@@ -10,13 +10,10 @@
 <header>
     <h1>Edit Champion</h1>
     <%- include('../components/nav_bar'); %>
-    <sub class = 'note'>
-        *** Only Difficulty, Ban Rate, Pick Rate, and Win Rate are editable on a Champion.
-    </sub>
 </header>
 
 <body>
-    <h2><%= champion.name %></h2>
+    <br><h1><%= champion.name %></h1><br>
     <table id='champion' class='dataViewTable'>
         <tr>
             <th>Name</th>
@@ -35,6 +32,10 @@
     </table>
 
     <br></br>
+    <sub class = 'note'>
+        *** Only Difficulty, Ban Rate, Pick Rate, and Win Rate are editable on a Champion.
+    </sub>
+    <br><br>
     <form action='edit?id_champion=<%=champion.id_champion%>' method='POST'>
         <label for='difficulty_level'>Difficulty:</label>
         <select name='difficulty_level' id='difficulty_level' size='3'>
@@ -42,21 +43,21 @@
             <option value='2'>Medium</option>
             <option value='3'>Hard</option>
         </select>
-
+        
         <label for='ban_rate'>Ban Rate:</label>
-        <input id='ban_rate' name='ban_rate' type='number' step='0.01'>
+        <input id='ban_rate' name='ban_rate' type='number' step='0.1'>
 
         <label for='pick_rate'>Pick Rate:</label>
-        <input id='pick_rate' name='pick_rate' type='number' step='0.01'>
+        <input id='pick_rate' name='pick_rate' type='number' step='0.1'>
 
         <label for='win_rate'>Win Rate:</label>
-        <input id='win_rate' name='win_rate' type='number' step='0.01'>
+        <input id='win_rate' name='win_rate' type='number' step='0.1'>
 
         <input type='submit' value='Submit'>
     </form>
 
     <br><br>
-    <h2><%= champion.name %> skills</h2>
+    <h2>Skills</h2><br>
         <table id='skills' class='dataViewTable'>
             <tr>
                 <th>Skill Type</th>
@@ -90,4 +91,7 @@
             </tr>
         </table>
 </body>
+<footer>
+    <h3>By Jeremy Steele and Sean Siders for CS 340</h3>
+</footer>
 </html>

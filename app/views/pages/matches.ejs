@@ -16,7 +16,7 @@
     <div id='entrance'>
         <h1>Match Summary </h1>
     </div>
-    <table>
+    <table class='dataViewTable'>
         <tr>
             <th>Team</th>
             <th>Won Game</th>
@@ -47,8 +47,7 @@
             <td>{summoner.name}</td>
             <td>{summoner.name}</td>
         </tr>
-        <tr><td><br></td></tr>
-        <tr><td><br></td></tr>
+
         <tr>
             <td>Blue</td>
             <td>{teams.total_gold_earned}</td>
@@ -73,15 +72,18 @@
     </table>
     <br>
     <p> Delete this match </p>
-        <form action='match.html' method='get'>
+        <form action='/app/views/pages/matches.ejs' method='get'>
             <input type='submit'>
         </form>
     <p> Return to the homepage </p>
-        <form action='index.html' method='get'>
+        <form action='index.ejs' method='get'>
             <input type='submit'>
         </form>
 
 
 </body>
+<footer>
+    <h3>By Jeremy Steele and Sean Siders for CS 340</h3>
+</footer>
 
 </html>
