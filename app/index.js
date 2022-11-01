@@ -37,7 +37,6 @@ app.get('/champions', (req, res) => {
         INNER JOIN skills AS skill_E ON skill_E.id_skill = champions.id_skill_E
         INNER JOIN skills AS skill_R ON skill_R.id_skill = champions.id_skill_R`,
         (err, data, fields) => {
-
             if (err == null) {
                 res.render('pages/champions', {
                     champions: data
@@ -49,16 +48,16 @@ app.get('/champions', (req, res) => {
     );
 });
 
-app.get('/matches.html', (req, res) => {
-    res.render('pages/matches');
-});
-
 app.get('/summoners', (req, res) => {
     res.render('pages/summoners');
 });
 
 app.get('/db_overview', (req, res) => {
     res.render('pages/db_overview');
+});
+
+app.get('/matches', (req, res) => {
+    res.render('pages/matches');
 });
 
 app.get('/champions/edit', (req, res) => {
