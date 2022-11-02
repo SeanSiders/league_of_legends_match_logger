@@ -15,40 +15,39 @@
 <body>
     <h1>Welcome to the League of Legends project</h1>
     <!--<p>View all Champions</p>
-    <form action="champions" method="get">
-        <input type="submit" value="submit">
+    <form action='champions' method='get'>
+        <input type='submit' value='submit'>
     </form> -->
     <p>Select your favorite champion</p>
-    <form action="champions" method="get">
-        <select name='champion' id='champion' size='1'>
-            <option value='1'>Aatrox</option>
-            <option value='2'>Ahri</option>
-            <option value='3'>Amumu</option>
+    <form action='champions/edit' method='get'>
+        <select name='id_champion' id='champion' size='1'>
+            <% champions.forEach(function(champion) { %>
+                <option value=<%=champion.id_champion%>><%=champion.name%></option>
+            <% }) %>
         </select>
-        <input type="submit" value="submit">
+        <input type='submit' value='Submit'>
     </form>
     <br>
-    <form action="create_champion" method="'get">
+    <form action='create_champion' method='get'>
         <p>Create a new champion</p>
-        <input type="submit">
+        <input type='submit'>
     </form>
     <br>
     <p>View your favorite player</p>
-    <form action="summoners" method="get">
-        <input type="text">
-        <input type="submit">
+    <form action='summoners' method='get'>
+        <input type='text'>
+        <input type='submit'>
     </form>
     <br>
 
     <p> View the most recent match history </p>
-    <form action="matches" method="get">
-        <input type="submit">
+    <form action='matches' method='get'>
+        <input type='submit'>
     </form>
     <!-- <p> View an overview </p>
-    <form action="db_overview" method="get">
-        <input type="submit">
+    <form action='db_overview' method='get'>
+        <input type='submit'>
     </form> -->
-
     <br>
 
 </body>
