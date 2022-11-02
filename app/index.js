@@ -56,6 +56,14 @@ app.get('/skills', (req, res) => {
     res.render('pages/skills');
 });
 
+app.get('/create_match', (req, res) => {
+    res.render('pages/create_match');
+});
+
+app.get('/create_champion', (req, res) => {
+    res.render('pages/create_champion');
+});
+
 app.get('/db_overview', (req, res) => {
     res.render('pages/db_overview');
 });

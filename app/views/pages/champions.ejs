@@ -13,6 +13,8 @@
 </header>
 
 <body>
+    
+    
     <table id='champions' class='dataViewTable'>
         <tr>
             <th>Name</th>
@@ -39,7 +41,7 @@
                 <td><%=data.W%></td>
                 <td><%=data.E%></td>
                 <td><%=data.R%></td>
-                <td><a href="/champions/edit?id_champion=<%=data.id_champion%>">Edit</a></td>
+                <td><a href="/champions/edit?id_champion=<%=data.id_champion%>">View/Edit</a></td>
                 <td><a href="/champions/delete/?id_champion=<%=data.id_champion%>">Delete</a></td>
             </tr>
             <% }) %>

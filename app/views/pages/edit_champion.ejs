@@ -32,13 +32,14 @@
     </table>
 
     <br></br>
+    <h2>Edit Champion Information</h2>
     <sub class = 'note'>
         *** Only Difficulty, Ban Rate, Pick Rate, and Win Rate are editable on a Champion.
     </sub>
     <br><br>
     <form action='edit?id_champion=<%=champion.id_champion%>' method='POST'>
         <label for='difficulty_level'>Difficulty:</label>
-        <select name='difficulty_level' id='difficulty_level' size='3'>
+        <select name='difficulty_level' id='difficulty_level' size='1'>
             <option value='1'>Easy</option>
             <option value='2'>Medium</option>
             <option value='3'>Hard</option>

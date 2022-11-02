@@ -14,20 +14,24 @@
 
 <body>
     <h1>Welcome to the League of Legends project</h1>
-    <p>View all Champions</p>
+    <!--<p>View all Champions</p>
     <form action="champions" method="get">
         <input type="submit" value="submit">
-    </form>
-    <p>Choose your favorite champion or select random</p>
+    </form> -->
+    <p>Select your favorite champion</p>
     <form action="champions" method="get">
-        <input type="text" name="champion">
+        <select name='champion' id='champion' size='1'>
+            <option value='1'>Aatrox</option>
+            <option value='2'>Ahri</option>
+            <option value='3'>Amumu</option>
+        </select>
         <input type="submit" value="submit">
     </form>
-    <Br>
-    <form action="edit_champion" method="get">
-        <input type="submit" value="Random">
+    <br>
+    <form action="create_champion" method="'get">
+        <p>Create a new champion</p>
+        <input type="submit">
     </form>
-
     <br>
     <p>View your favorite player</p>
     <form action="summoners" method="get">
@@ -40,10 +44,10 @@
     <form action="matches" method="get">
         <input type="submit">
     </form>
-    <p> View an overview </p>
+    <!-- <p> View an overview </p>
     <form action="db_overview" method="get">
         <input type="submit">
-    </form>
+    </form> -->
 
     <br>
 
