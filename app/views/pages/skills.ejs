@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Homepage for League</title>
+    <link rel='stylesheet' href='css/style.css' type='text/css'/>
+</head>
+
+<header>
+    <h1>League of Legends Skills</h1>
+    <%- include('../components/nav_bar'); %>
+</header>
+
+<body>
+    <div id="entrance">
+        <p>Select a champion to see their skills</p>
+        <form action="/edit_champion" method="get">
+            <input type="text">
+            <input type="submit">
+        </form>
+        <p>Create a Skill for a new champion</p>
+        <form action="/create_skill" method="post">
+            <label for='skill_mapping'>Skill Mapping:</label>
+            <select name='skill_mapping' id='skill_mapping' size='1'>
+                <option value='P'>P</option>
+                <option value='Q'>Q</option>
+                <option value='W'>W</option>
+                <option value='E'>E</option>
+                <option value='R'>R</option>
+            </select>
+            <label for="skill_name">Skill Name</label>
+                <input type="text" id="skill_name" required="required">
+            <label for="skill_description">Skill Description</label>
+                <input type="text" id="skill_description">
+            <br>
+                <input type="submit">
+        </form>
+    </div>
+
+</body>
+<footer>
+    <h3>By Jeremy Steele and Sean Siders for CS 340</h3>
+</footer>
+
+</html>
