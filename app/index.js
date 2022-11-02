@@ -52,6 +52,10 @@ app.get('/summoners', (req, res) => {
     res.render('pages/summoners');
 });
 
+app.get('/skills', (req, res) => {
+    res.render('pages/skills');
+});
+
 app.get('/db_overview', (req, res) => {
     res.render('pages/db_overview');
 });
