@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Create Champion</title>
+    <link rel='stylesheet' href='../css/style.css' type='text/css'/>
+</head>
+
+<header>
+    <h1>Create Champion</h1>
+    <%- include('../components/nav_bar'); %>
+</header>
+
+<body>
+    <br><h1>New Champion</h1><br>
+    <table id='champion' class='dataViewTable'>
+        <form action="/create_champion_sql" method="POST">
+        <tr>
+            <th>Name</th>
+            <th>Difficulty</th>
+            <th>Ban Rate</th>
+            <th>Pick Rate</th>
+            <th>Win Rate</th>
+        </tr>
+        <tr>
+            <td><input type="text" id="champion_name"></td>
+            <td><select id='difficulty_level' size='1'>
+                <option value='1'>Easy</option>
+                <option value='2'>Medium</option>
+                <option value='3'>Hard</option>
+            </select></td>
+            <td><input type="number" id="ban_rate"></td>
+            <td><input type="number" id="pick_rate"></td>
+            <td><input type="number" id="win_rate"></td>
+        </tr>
+    </table>
+
+    <br><br>
+    <h2>Skills</h2><br>
+        <table id='skills' class='dataViewTable'>
+            <tr>
+                <th>Skill Type</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Passive</td>
+                <td><input type="text" id="p"></td>
+                <td><input type="text" id="p_desc"></td>
+            </tr>
+            <tr>
+                <td>Q</td>
+                <td><input type="text" id="q"></td>
+                <td><input type="text" id="q_desc"></td>
+            </tr>
+            <tr>
+                <td>W</td>
+                <td><input type="text" id="w"></td>
+                <td><input type="text" id="w_desc"></td>
+            </tr>
+            <tr>
+                <td>E</td>
+                <td><input type="text" id="e"></td>
+                <td><input type="text" id="e_desc"></td>
+            </tr>
+            <tr>
+                <td>R</td>
+                <td><input type="text" id="r"></td>
+                <td><input type="text" id="r_desc"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+<footer>
+    <h3>By Jeremy Steele and Sean Siders for CS 340</h3>
+</footer>
+</html>
