@@ -83,12 +83,27 @@ function getChampion(id_champion) {
 function updateChampion(champion) {
     return new Promise(
         (resolve, reject) => {
-            pool.query(`UPDATE champions SET
+            pool.query(
+                `UPDATE champions SET
                 difficulty_level = '${champion.difficulty_level}',
                 ban_rate = ${champion.ban_rate},
                 pick_rate = ${champion.pick_rate},
                 win_rate = ${champion.win_rate}
                 WHERE champions.id_champion = '${champion.id_champion}'`,
+                (err, result) => {
+                    if (err) return reject(err);
+                    return resolve(result);
+                }
+            );
+        }
+    );
+}
+
+function deleteChampion(id_champion) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `DELETE FROM champions WHERE id_champion = '${id_champion}'`,
                 (err, result) => {
                     if (err) return reject(err);
                     return resolve(result);
@@ -203,6 +218,7 @@ module.exports.getChampions = getChampions;
 module.exports.getChampionKeyValuePairs = getChampionKeyValuePairs;
 module.exports.getChampion = getChampion;
 module.exports.updateChampion = updateChampion;
+module.exports.deleteChampion = deleteChampion;
 module.exports.getMatches = getMatches;
 module.exports.getTeam = getTeam;
 module.exports.resetDatabase = resetDatabase;

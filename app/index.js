@@ -85,8 +85,9 @@ app.post('/champions/edit', async (req, res) => {
     }
 });
 
-app.get('/champions/delete', (req, res) => {
-    res.send(req.query.id_champion);
+app.get('/champions/delete', async (req, res) => {
+    await db.deleteChampion(req.query.id_champion);
+    res.redirect('/champions');
 });
 
 // ---------------------------------------------------------------------------
