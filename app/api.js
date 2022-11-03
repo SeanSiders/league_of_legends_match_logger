@@ -1,13 +1,24 @@
 
+/// npm install --save teemojs /// 
+/// npm install node-fetch@2 /// required to work with CommonJs and require ()
 
-//const TeemoJS = require('teemojs');
-//let api = TeemoJS('RGAPI-KEY-HERE');
+/// Developer API-key uninstalls every 24 hours --- https://developer.riotgames.com ///
 
+const TeemoJS = require('teemojs');
+const config = require('./config');
+const fetch = require('node-fetch');
 
-const url = 'https://developer.riotgames.com//riot/account/v1/accounts/by-puuid/{puuid}'
+let api = TeemoJS(config.api_key);
+
+const url = 'https://developer.riotgames.com//riot/account/v1/accounts/by-puuid/'
 //async function getRequest(summoner) {}};
 
-const button = document.getElementById('myButton');
-button.addEventListener('click', function(e) {
-  console.log('button was clicked');
-});
+/// user = await getRequest('LotusFlowerWolf')
+// console.log(user)
+
+
+
+api.get('na1', 'summoner.getBySummonerName', "LotusFlowerWolf")
+  .then(data => console.log(data.name + "'s summoner id is " + data.id + '.'))
+  .then()
+
