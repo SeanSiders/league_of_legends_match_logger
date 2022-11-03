@@ -151,9 +151,7 @@ CREATE TABLE IF NOT EXISTS matches (
 ENGINE = InnoDB;
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------
 -- LEAGUE OF LEGENDS STATIC GAME DATA
--------------------------------------------------------------------------------------------------------------------------------------------------
 
 INSERT INTO skills (id_skill, name, description) VALUES
 (1, 'Orb of Deception', 'Ahri sends out and pulls back her orb, dealing magic damage on the way out and true damage on the way back.'),
@@ -837,9 +835,7 @@ INSERT INTO champions (id_champion, name, difficulty_level, ban_rate, pick_rate,
 ('zilean', 'Zilean', 'easy', 0.0, 0.0, 0.0, 555, 556, 557, 558, 559),
 ('zyra', 'Zyra', 'easy', 0.0, 0.0, 0.0, 560, 561, 562, 563, 564);
 
--------------------------------------------------------------------------------------------------------------------------------------------------
 -- SAMPLE DATA
--------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- SUMMONERS
 INSERT INTO summoners (id_summoner, name)
