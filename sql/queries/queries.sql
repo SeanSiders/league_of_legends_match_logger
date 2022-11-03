@@ -89,31 +89,15 @@ DELETE FROM teams WHERE teams.id_team = @id_team;
 
 --------------------------------------------------------------------------------------
 -- non-foreign key attributes, champion names, and summoner names
-SELECT teams.total_gold_earned,
-champion_1.name, champion_2.name, champion_3.name, champion_4.name, champion_5.name,
-summoner_1.name, summoner_2.name, summoner_3.name, summoner_4.name, summoner_5.name
-FROM teams
--- 1
-LEFT JOIN played_champions AS p1 ON p1.id_played_champion = teams.id_played_champion_1
-INNER JOIN champions AS champion_1 ON champion_1.id_champion = p1.id_champion
-INNER JOIN summoners AS summoner_1 ON summoner_1.id_summoner = p1.id_summoner
--- 2
-LEFT JOIN played_champions AS p2 ON p2.id_played_champion = teams.id_played_champion_2
-INNER JOIN champions AS champion_2 ON champion_2.id_champion = p2.id_champion
-INNER JOIN summoners AS summoner_2 ON summoner_2.id_summoner = p2.id_summoner
--- 3
-LEFT JOIN played_champions AS p3 ON p3.id_played_champion = teams.id_played_champion_3
-INNER JOIN champions AS champion_3 ON champion_3.id_champion = p3.id_champion
-INNER JOIN summoners AS summoner_3 ON summoner_3.id_summoner = p3.id_summoner
--- 4
-LEFT JOIN played_champions AS p4 ON p4.id_played_champion = teams.id_played_champion_4
-INNER JOIN champions AS champion_4 ON champion_4.id_champion = p4.id_champion
-INNER JOIN summoners AS summoner_4 ON summoner_4.id_summoner = p4.id_summoner
--- 5
-LEFT JOIN played_champions AS p5 ON p5.id_played_champion = teams.id_played_champion_5
-INNER JOIN champions AS champion_5 ON champion_5.id_champion = p5.id_champion
-INNER JOIN summoners AS summoner_5 ON summoner_5.id_summoner = p5.id_summoner
---
+SELECT teams.total_gold_earned, played_champions.id_played_champion, champions.name AS champion_name, summoners.name AS summoner_name FROM teams 
+LEFT JOIN played_champions ON
+    id_played_champion = id_played_champion_1 OR
+    id_played_champion = id_played_champion_2 OR
+    id_played_champion = id_played_champion_3 OR
+    id_played_champion = id_played_champion_4 OR
+    id_played_champion = id_played_champion_5
+INNER JOIN champions ON champions.id_champion = played_champions.id_champion
+INNER JOIN summoners ON summoners.id_summoner = played_champions.id_summoner
 WHERE teams.id_team = @id_team;
 --------------------------------------------------------------------------------------
 

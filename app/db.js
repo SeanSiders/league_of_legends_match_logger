@@ -6,6 +6,7 @@ const password = '7107';
 // Get an instance of mysql we can use in the app
 const mysql = require('mysql');
 const fs = require('fs');
+const { match } = require('assert');
 
 // Create a 'connection pool' using the provided credentials
 const pool = mysql.createPool({
@@ -71,9 +72,30 @@ function getChampion(id_champion) {
                 WHERE champions.id_champion = '${id_champion}'
                 LIMIT 1`,
                 (err, championData) => {
-                    console.log(championData[0]);
                     if (err) return reject(err);
                     return resolve(championData[0]);
+                }
+            );
+        }
+    );
+}
+
+function getPlayedChampion(id_played_champion) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `SELECT champions.name AS champion_name, summoners.name AS summoner_name FROM played_champions
+                INNER JOIN champions ON champions.id_champion = played_champions.id_champion
+                INNER JOIN summoners ON summoners.id_summoner = played_champions.id_summoner
+                WHERE id_played_champion = ${id_played_champion}`,
+                (err, playedChampion) => {
+                    if (err) return reject(err);
+                    console.log(playedChampion);
+                    if (playedChampion.length == 0) return resolve(null);
+                    return resolve({
+                        champion_name: playedChampion[0].champion_name,
+                        summoner_name: playedChampion[0].summoner_name
+                    });
                 }
             );
         }
@@ -148,36 +170,32 @@ function getTeam(id_team) {
     return new Promise(
         (resolve, reject) => {
             pool.query(
-                `SELECT teams.total_gold_earned,
-                champion_1.name, champion_2.name, champion_3.name, champion_4.name, champion_5.name,
-                summoner_1.name, summoner_2.name, summoner_3.name, summoner_4.name, summoner_5.name
-                FROM teams
-                -- 1
-                LEFT JOIN played_champions AS p1 ON p1.id_played_champion = teams.id_played_champion_1
-                INNER JOIN champions AS champion_1 ON champion_1.id_champion = p1.id_champion
-                INNER JOIN summoners AS summoner_1 ON summoner_1.id_summoner = p1.id_summoner
-                -- 2
-                LEFT JOIN played_champions AS p2 ON p2.id_played_champion = teams.id_played_champion_2
-                INNER JOIN champions AS champion_2 ON champion_2.id_champion = p2.id_champion
-                INNER JOIN summoners AS summoner_2 ON summoner_2.id_summoner = p2.id_summoner
-                -- 3
-                LEFT JOIN played_champions AS p3 ON p3.id_played_champion = teams.id_played_champion_3
-                INNER JOIN champions AS champion_3 ON champion_3.id_champion = p3.id_champion
-                INNER JOIN summoners AS summoner_3 ON summoner_3.id_summoner = p3.id_summoner
-                -- 4
-                LEFT JOIN played_champions AS p4 ON p4.id_played_champion = teams.id_played_champion_4
-                INNER JOIN champions AS champion_4 ON champion_4.id_champion = p4.id_champion
-                INNER JOIN summoners AS summoner_4 ON summoner_4.id_summoner = p4.id_summoner
-                -- 5
-                LEFT JOIN played_champions AS p5 ON p5.id_played_champion = teams.id_played_champion_5
-                INNER JOIN champions AS champion_5 ON champion_5.id_champion = p5.id_champion
-                INNER JOIN summoners AS summoner_5 ON summoner_5.id_summoner = p5.id_summoner
-                --
-                WHERE teams.id_team = '${id_team}'`,
-                (err, team) => {
+                `SELECT * FROM teams WHERE teams.id_team = ${id_team}`,
+                async (err, team) => {
                     if (err) return reject(err);
-                    console.log(team[0]);
-                    return resolve(team[0]);
+                    team = team[0]
+
+                    // Populate up to 5 played champions for this team
+                    team.played_champions = [5];
+                    if (team.id_played_champion_1) {
+                        team.played_champions[0] = await getPlayedChampion(team.id_played_champion_1);
+                    }
+                    if (team.id_played_champion_2) {
+                        team.played_champions[1] = await getPlayedChampion(team.id_played_champion_2);
+                    }
+                    if (team.id_played_champion_3) {
+                        team.played_champions[2] = await getPlayedChampion(team.id_played_champion_3);
+                        console.log(team.id_played_champion_3);
+                    }
+                    if (team.id_played_champion_4) {
+                        team.played_champions[3] = await getPlayedChampion(team.id_played_champion_4);
+                    }
+                    if (team.id_played_champion_5) {
+                        team.played_champions[4] = await getPlayedChampion(team.id_played_champion_5);
+                    }
+                    console.log(team);
+
+                    return resolve(team);
                 }
             );
         }

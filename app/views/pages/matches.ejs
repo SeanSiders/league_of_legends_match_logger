@@ -27,48 +27,87 @@
             <th>Champion #4</th>
             <th>Champion #5</th>
         </tr>
-        <tr>
-            <td>Red</td>
-            <td>{teams.total_gold_earned}</td>
-            <td>{matches.winning_team}</td>
-            <td>{champions.name}</td>
-            <td>{champions.name}</td>
-            <td>{champions.name}</td>
-            <td>{champions.name}</td>
-            <td>{champions.name}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{summoner.name}</td>
-            <td>{summoner.name}</td>
-            <td>{summoner.name}</td>
-            <td>{summoner.name}</td>
-            <td>{summoner.name}</td>
-        </tr>
+        <% matches.forEach((match) => { %>
+            <tr>
+                <td>Red</td>
+                <% if (match.winning_team == 'red') { %>
+                    <td><input type='radio' onclick='return false;' checked></td>
+                <% } else { %>
+                    <td><input type='radio' onclick='return false;'></td>
+                <% } %>
+                <td><%=match.red_team.total_gold_earned%></td>
+                <% match.red_team.played_champions.forEach((champion) => { %>
+                    <% if (champion) { %>
+                        <td><%=champion.champion_name%></td>
+                    <% } else { %>
+                        <td></td>
+                    <% } %>
+                <% }) %>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <% match.red_team.played_champions.forEach((champion) => { %>
+                    <% if (champion) { %>
+                        <td><%=champion.summoner_name%></td>
+                    <% } else { %>
+                        <td></td>
+                    <% } %>
+                <% }) %>
+            </tr>
 
-        <tr>
-            <td>Blue</td>
-            <td>{teams.total_gold_earned}</td>
-            <td>{matches.winning_team}</td>
-            <td>{champions.name}</td>
-            <td>{champions.name}</td>
-            <td>{champions.name}</td>
-            <td>{champions.name}</td>
-            <td>{champions.name}</td> 
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>{summoner.name}</td>
-            <td>{summoner.name}</td>
-            <td>{summoner.name}</td>
-            <td>{summoner.name}</td>
-            <td>{summoner.name}</td>
-        </tr>
+            <tr>
+                <td>Blue</td>
+                <% if (match.winning_team == 'blue') { %>
+                    <td><input type='radio' onclick='return false;' checked></td>
+                <% } else { %>
+                    <td><input type='radio' onclick='return false;'></td>
+                <% } %>
+                <td><%=match.blue_team.total_gold_earned%></td>
+                <% match.blue_team.played_champions.forEach((champion) => { %>
+                    <% if (champion) { %>
+                        <td><%=champion.champion_name%></td>
+                    <% } else { %>
+                        <td></td>
+                    <% } %>
+                <% }) %>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <% match.blue_team.played_champions.forEach((champion) => { %>
+                    <% if (champion) { %>
+                        <td><%=champion.summoner_name%></td>
+                    <% } else { %>
+                        <td></td>
+                    <% } %>
+                <% }) %>
+            </tr>
 
+            <!-- TODO: spacing of match entries through CSS -->
+            <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        <% }) %>
     </table>
     <br>
     <h3>Create a new match</h3>

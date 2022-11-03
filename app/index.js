@@ -4,7 +4,7 @@ const db = require('./db');
 const path = require('path');
 
 const app = express();
-const PORT = 3075;
+const PORT = 3099;
 
 app.set('view engine', 'ejs');
 
