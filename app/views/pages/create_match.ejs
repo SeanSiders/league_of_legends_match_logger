@@ -13,114 +13,126 @@
 </header>
 
 <body>
-    <div id='entrance'>
-        <h1>Create a Match </h1>
-    </div>
-    <table class='dataViewTable'>
-        <form action='/create_match' method='POST'>
-        <tr>
-            <th>Team</th>
-            <th>Won Game</th>
-            <th>Total Gold</th>
-            <th>Champion #1</th>
-            <th>Champion #2</th>
-            <th>Champion #3</th>
-            <th>Champion #4</th>
-            <th>Champion #5</th>
-        </tr>
-        <tr>
-            <td>Red</td>
-            <td><input type='radio' id='red_win' name='winning_team'></td>
-            <td><input type='number' id='red_gold' placeholder=0></td>
-            <td><select name='champion_1' id='champion_1'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-            <td><select name='champion_2' id='champion_2'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-            <td><select name='champion_3' id='champion_3'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-            <td><select name='champion_4' id='champion_4'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-            <td><select name='champion_5' id='champion_5'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-        </tr>
-        <tr>
-            <td>Blue</td>
-            <td><input type='radio' id='blue_win' name='winning_team'></td>
-            <td><input type='number' id='blue_gold' placeholder=0></td>
-            <td><select name='champion_1' id='champion_1'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-            <td><select name='champion_2' id='champion_2'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-            <td><select name='champion_3' id='champion_3'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-            <td><select name='champion_4' id='champion_4'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-            <td><select name='champion_5' id='champion_5'>
-                <% champions.forEach(function(champion) { %>
-                    <option value=<%=champion.id_champion%>><%=champion.name%></option>
-                <% }) %>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-            <td><input type='text' placeholder='Riot ID' required></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-            <td><input type='text' placeholder='Summoner Name'></td>
-        </tr>
-    </table>
-    <br>
-    <input type='submit'>
+    <form action='/create_match' method='POST'>
+
+        <table class='dataViewTable'>
+            <tr>
+                <th>Team</th>
+                <th>Won Game</th>
+                <th>Total Gold</th>
+                <th>Champion #1</th>
+                <th>Champion #2</th>
+                <th>Champion #3</th>
+                <th>Champion #4</th>
+                <th>Champion #5</th>
+            </tr>
+            <tr>
+                <td>Red</td>
+                <td><input type='radio' id='red_win' value='red_win' name='winning_team' required></td>
+                <td><input type='number' id='red_gold' name='red_gold' placeholder=0 min=0></td>
+                <td><select name='red_champion_1' id='red_champion_1'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+                <td><select name='red_champion_2' id='red_champion_2'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+                <td><select name='red_champion_3' id='red_champion_3'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+                <td><select name='red_champion_4' id='red_champion_4'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+                <td><select name='red_champion_5' id='red_champion_5'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_1' name = 'red_rid_1' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_2' name = 'red_rid_2' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_3' name = 'red_rid_3' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_4' name = 'red_rid_4' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_5' name = 'red_rid_5' required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_1', name = 'red_summoner_1'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_2', name = 'red_summoner_2'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_3', name = 'red_summoner_3'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_4', name = 'red_summoner_4'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_5', name = 'red_summoner_5'></td>
+            </tr>
+            <tr>
+                <td>Blue</td>
+                <td><input type='radio' id='blue_win' value='blue_win' name='winning_team' required></td>
+                <td><input type='number' id='blue_gold' name='blue_gold' placeholder=0 min=0></td>
+                <td><select name='blue_champion_1' id='blue_champion_1'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+                <td><select name='blue_champion_2' id='blue_champion_2'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+                <td><select name='blue_champion_3' id='blue_champion_3'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+                <td><select name='blue_champion_4' id='blue_champion_4'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+                <td><select name='blue_champion_5' id='blue_champion_5'>
+                    <% champions.forEach(function(champion) { %>
+                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                    <% }) %>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_1' name = 'blue_rid_1' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_2' name = 'blue_rid_2' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_3' name = 'blue_rid_3' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_4' name = 'blue_rid_4' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_5' name = 'blue_rid_5' required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_1', name = 'blue_summoner_1'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_2', name = 'blue_summoner_2'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_3', name = 'blue_summoner_3'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_4', name = 'blue_summoner_4'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_5', name = 'blue_summoner_5'></td>
+            </tr>
+        </table>
+
+        <br>
+
+        <table class='dataViewTable'>
+            <tr>
+                <th>Match Duration</th>
+            </tr>
+            <tr>
+                <td><input type='number' id='match_duration_seconds' name='match_duration_seconds' placeholder=0 min=0></td>
+            </tr>
+        </table>
+
+        <br>
+
+        <input type='submit' value='Create Match'>
+
     </form>
     <br>
 </body>

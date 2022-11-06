@@ -852,7 +852,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Gumay
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('aatrox', 'Oner');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('teemo', 'Oner');
 UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
@@ -875,7 +875,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('ahri', 'Keria')
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('aatrox', 'Oner');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('teemo', 'Oner');
 UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
@@ -901,7 +901,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Faker
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('aatrox', 'Oner');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('teemo', 'Oner');
 UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
@@ -924,7 +924,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('ahri', 'Keria')
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('aatrox', 'Oner');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('teemo', 'Oner');
 UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 

@@ -2,6 +2,7 @@
 const express = require('express');
 const db = require('./db');
 const path = require('path');
+const { match } = require('assert');
 
 const app = express();
 const PORT = 3099;
@@ -97,6 +98,14 @@ app.get('/champions/delete', async (req, res) => {
 app.get('/create_match', async (req, res) => {
     res.render('pages/create_match', {
         champions: await db.getChampionKeyValuePairs()
+    });
+});
+
+app.post('/create_match', async (req, res) => {
+    await db.createMatch(req.body);
+
+    res.render('pages/matches', {
+        matches: await db.getMatches()
     });
 });
 

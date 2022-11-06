@@ -13,9 +13,10 @@
 </header>
 
 <body>
-    <div id='entrance'>
-        <h1>Match Summary </h1>
-    </div>
+    <br>
+    <a href='create_match'><h3>Create a Match</h3></a>
+    <br>
+
     <table class='dataViewTable'>
         <tr>
             <th>Team</th>
@@ -26,6 +27,7 @@
             <th>Champion #3</th>
             <th>Champion #4</th>
             <th>Champion #5</th>
+            <th>Match Duration (s)</th>
         </tr>
         <% matches.forEach((match) => { %>
             <tr>
@@ -43,6 +45,7 @@
                         <td></td>
                     <% } %>
                 <% }) %>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
@@ -55,6 +58,7 @@
                         <td></td>
                     <% } %>
                 <% }) %>
+                <td></td>
             </tr>
 
             <tr>
@@ -72,6 +76,7 @@
                         <td></td>
                     <% } %>
                 <% }) %>
+                <td></td>
             </tr>
             <tr>
                 <td></td>
@@ -84,6 +89,7 @@
                         <td></td>
                     <% } %>
                 <% }) %>
+                <td></td>
             </tr>
 
             <!-- TODO: spacing of match entries through CSS -->
@@ -96,6 +102,7 @@
                 <td>-</td>
                 <td>-</td>
                 <td>-</td>
+                <td><%=match.match_duration_seconds%></td>
             </tr>
             <tr>
                 <td></td>
@@ -109,17 +116,8 @@
             </tr>
         <% }) %>
     </table>
-    <br>
-    <h3>Create a new match</h3>
-        <form action="create_match" method="get">
-            <input type="submit">
-        </form>
-    <h3> Delete this match </h3>
-        <form action='matches' method='get'>
-            <input type='submit'>
-        </form>
-
 </body>
+
 <footer>
     <h3>By Jeremy Steele and Sean Siders for CS 340</h3>
 </footer>
