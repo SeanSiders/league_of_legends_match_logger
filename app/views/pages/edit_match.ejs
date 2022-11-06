@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>Red</td>
-                <td><input type='radio' id='red_win' value='red_win' name='winning_team' required></td>
+                <td><input type='radio' id='red_win' value='red' name='winning_team' required></td>
                 <td><input type='number' id='red_gold' name='red_gold' placeholder=0 min=0></td>
                 <td><select name='red_champion_1' id='red_champion_1'>
                     <% champions.forEach(function(champion) { %>
@@ -73,7 +73,7 @@
             </tr>
             <tr>
                 <td>Blue</td>
-                <td><input type='radio' id='blue_win' value='blue_win' name='winning_team' required></td>
+                <td><input type='radio' id='blue_win' value='blue' name='winning_team' required></td>
                 <td><input type='number' id='blue_gold' name='blue_gold' placeholder=0 min=0></td>
                 <td><select name='blue_champion_1' id='blue_champion_1'>
                     <% champions.forEach(function(champion) { %>
@@ -131,7 +131,7 @@
 
         <br>
 
-        <input type='submit' value='Create Match'>
+        <input type='submit' value='Submit'>
 
     </form>
     <br>

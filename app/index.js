@@ -96,7 +96,7 @@ app.get('/champions/delete', async (req, res) => {
 // ---------------------------------------------------------------------------
 
 app.get('/create_match', async (req, res) => {
-    res.render('pages/create_match', {
+    res.render('pages/edit_match', {
         champions: await db.getChampionKeyValuePairs()
     });
 });
