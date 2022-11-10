@@ -307,6 +307,29 @@ function getMatches() {
     );
 }
 
+function getMatch(id_match) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `SELECT * FROM matches WHERE id_match = '${id_match}'`,
+                async (err, matchData) => {
+                    if (err) return reject(err);
+                    let match = matchData[0];
+
+                    try {
+                        match.red_team = await getTeam(match.id_team_red);
+                        match.blue_team = await getTeam(match.id_team_blue);
+
+                        return resolve(match);
+                    } catch (err) {
+                        return reject(err);
+                    }
+                }
+            );
+        }
+    );
+}
+
 async function createMatch(match) {
     await createOrUpdateSummoners(match);
     match = await createPlayedChampions(match);
@@ -319,6 +342,20 @@ async function createMatch(match) {
                 (err, results) => {
                     if (err) return reject(err);
                     return resolve(results);
+                }
+            );
+        }
+    );
+}
+
+function deleteMatch(id_match) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `DELETE FROM matches WHERE id_match = '${id_match}'`,
+                (err, result) => {
+                    if (err) return reject(err);
+                    return resolve(result);
                 }
             );
         }
@@ -449,6 +486,8 @@ module.exports.getChampion = getChampion;
 module.exports.updateChampion = updateChampion;
 module.exports.deleteChampion = deleteChampion;
 module.exports.getMatches = getMatches;
+module.exports.getMatch = getMatch;
 module.exports.getTeam = getTeam;
 module.exports.createMatch = createMatch;
+module.exports.deleteMatch = deleteMatch;
 module.exports.resetDatabase = resetDatabase;

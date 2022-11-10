@@ -115,6 +115,19 @@ app.get('/matches', async (req, res) => {
     });
 });
 
+app.get('/matches/delete', async (req, res) => {
+    await db.deleteMatch(req.query.id_match);
+    res.redirect('/matches');
+});
+
+app.get('/matches/edit', async (req, res) => {
+    console.log(await db.getMatch(req.query.id_match));
+    res.render('pages/edit_match', {
+        match: await db.getMatch(req.query.id_match),
+        champions: await db.getChampionKeyValuePairs()
+    });
+});
+
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 

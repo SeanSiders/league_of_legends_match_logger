@@ -2,7 +2,6 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-
 CREATE TABLE IF NOT EXISTS skills (
   id_skill INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NOT NULL,
@@ -34,27 +33,27 @@ CREATE TABLE IF NOT EXISTS champions (
   CONSTRAINT fk_champions_skills1
     FOREIGN KEY (id_skill_P)
     REFERENCES skills (id_skill)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills2
     FOREIGN KEY (id_skill_Q)
     REFERENCES skills (id_skill)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills3
     FOREIGN KEY (id_skill_W)
     REFERENCES skills (id_skill)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills4
     FOREIGN KEY (id_skill_E)
     REFERENCES skills (id_skill)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills5
     FOREIGN KEY (id_skill_R)
     REFERENCES skills (id_skill)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -77,12 +76,12 @@ CREATE TABLE IF NOT EXISTS played_champions (
   CONSTRAINT fk_id_champion
     FOREIGN KEY (id_champion)
     REFERENCES champions (id_champion)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT fk_played_champions_summoners1
     FOREIGN KEY (id_summoner)
     REFERENCES summoners (id_summoner)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -104,27 +103,27 @@ CREATE TABLE IF NOT EXISTS teams (
   CONSTRAINT fk_teams_played_champions1
     FOREIGN KEY (id_played_champion_1)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions2
     FOREIGN KEY (id_played_champion_2)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions3
     FOREIGN KEY (id_played_champion_3)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions4
     FOREIGN KEY (id_played_champion_4)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions5
     FOREIGN KEY (id_played_champion_5)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE SET NULL
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -141,15 +140,14 @@ CREATE TABLE IF NOT EXISTS matches (
   CONSTRAINT fk_real_match_info_teams1
     FOREIGN KEY (id_team_red)
     REFERENCES teams (id_team)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT fk_real_match_info_teams2
     FOREIGN KEY (id_team_blue)
     REFERENCES teams (id_team)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
-
 
 -- LEAGUE OF LEGENDS STATIC GAME DATA
 
