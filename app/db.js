@@ -99,15 +99,19 @@ function getChampion(id_champion) {
     );
 }
 
-function createChampion(id, name, diff, ban, pick, win) {
+function createChampion(champion) {
     return new Promise(
         (resolve, reject) => {
             pool.query(
                 `INSERT INTO champions 
-                (name, difficulty_level, ban_rate, pick_rate, win_rate, id_skill_P, id_skill_Q, id_skill_W, id_skill_E, id_skill_R
-                ) VALUES ('${id}, '${name}', '${diff}', '${ban}, ${pick}, ${win}, 56, 34, 23, 34, 67);`,
+                (id_champion, name, difficulty_level, ban_rate, pick_rate, win_rate, id_skill_P, id_skill_Q, id_skill_W, id_skill_E, id_skill_R
+                ) VALUES ('${champion.id}', '${champion.name}', '${champion.diff}', '${champion.ban}', '${champion.pick}', '${champion.win}', 56, 34, 23, 34, 67);`,
             (err, result) => {
-                if (err) return reject(err);
+                if (err) {
+                    console.log(err);
+                    return reject(err);
+                }
+                console.log(result);
                 return resolve(result);
             }
             );

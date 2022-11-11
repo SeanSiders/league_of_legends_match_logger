@@ -5,7 +5,7 @@ const path = require('path');
 const { match } = require('assert');
 
 const app = express();
-const PORT = 3099;
+const PORT = 3079;
 
 app.set('view engine', 'ejs');
 
@@ -55,6 +55,7 @@ app.get('/create_champion', (req, res) => {
 });
 
 app.post('/create_champion_sql', async (req, res) => {
+    console.log(req.body);
     try {
         await db.createChampion({
             id: req.body.champion_name,
@@ -64,10 +65,9 @@ app.post('/create_champion_sql', async (req, res) => {
             pick: req.body.pick_rate,
             win: req.body.win_rate
         });
+        
+        res.redirect('/champions');
 
-        res.render('pages/champions', {
-            champions: await db.getChampions()
-        });
     } catch (err) {
         res.send(`${err}`);
     }
@@ -152,10 +152,6 @@ app.get('/matches/edit', async (req, res) => {
 
 app.get('/summoners', (req, res) => {
     res.render('pages/summoners');
-});
-
-app.get('/skills', (req, res) => {
-    res.render('pages/skills');
 });
 
 app.get('/db_overview', (req, res) => {
