@@ -107,11 +107,7 @@ function createChampion(champion) {
                 (id_champion, name, difficulty_level, ban_rate, pick_rate, win_rate, id_skill_P, id_skill_Q, id_skill_W, id_skill_E, id_skill_R
                 ) VALUES ('${champion.id}', '${champion.name}', '${champion.diff}', '${champion.ban}', '${champion.pick}', '${champion.win}', 56, 34, 23, 34, 67);`,
             (err, result) => {
-                if (err) {
-                    console.log(err);
-                    return reject(err);
-                }
-                console.log(result);
+                if (err) return reject(err);
                 return resolve(result);
             }
             );
