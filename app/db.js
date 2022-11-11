@@ -7,6 +7,7 @@ const password = '7107';
 const mysql = require('mysql');
 const fs = require('fs');
 const { match } = require('assert');
+const { create } = require('domain');
 
 // Create a 'connection pool' using the provided credentials
 const pool = mysql.createPool({
@@ -97,6 +98,22 @@ function getChampion(id_champion) {
         }
     );
 }
+
+function createChampion(id, name, diff, ban, pick, win) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `INSERT INTO champions 
+                (name, difficulty_level, ban_rate, pick_rate, win_rate, id_skill_P, id_skill_Q, id_skill_W, id_skill_E, id_skill_R
+                ) VALUES ('${id}, '${name}', '${diff}', '${ban}, ${pick}, ${win}, 56, 34, 23, 34, 67);`,
+            (err, result) => {
+                if (err) return reject(err);
+                return resolve(result);
+            }
+            );
+        }
+    );
+};
 
 function updateChampion(champion) {
     return new Promise(
@@ -484,6 +501,7 @@ module.exports.getChampions = getChampions;
 module.exports.getChampionKeyValuePairs = getChampionKeyValuePairs;
 module.exports.getChampion = getChampion;
 module.exports.updateChampion = updateChampion;
+module.exports.createChampion = createChampion;
 module.exports.deleteChampion = deleteChampion;
 module.exports.getMatches = getMatches;
 module.exports.getMatch = getMatch;

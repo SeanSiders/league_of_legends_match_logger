@@ -54,6 +54,25 @@ app.get('/create_champion', (req, res) => {
     res.render('pages/create_champion');
 });
 
+app.post('/create_champion_sql', async (req, res) => {
+    try {
+        await db.createChampion({
+            id: req.body.champion_name,
+            name: req.body.champion_name,
+            diff: req.body.difficulty_level,
+            ban: req.body.ban_rate,
+            pick: req.body.pick_rate,
+            win: req.body.win_rate
+        });
+
+        res.render('pages/champions', {
+            champions: await db.getChampions()
+        });
+    } catch (err) {
+        res.send(`${err}`);
+    }
+});
+
 app.get('/champions/edit', async (req, res) => {
     try {
         res.render('pages/edit_champion', {
