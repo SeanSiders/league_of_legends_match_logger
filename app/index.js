@@ -148,15 +148,13 @@ app.get('/matches/edit', async (req, res) => {
     });
 });
 
-app.post('')
 
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 app.get('/summoners', async (req, res) => {
-    console.log(req.query, await db.getSummonerName(req.query.id_summoner))
     res.render('pages/summoners', {
-        name: await db.getSummonerName(req.query.id_summoner),
+        nameTime: await db.getSummonerName(req.query.id_summoner),
         summ: req.query
     });
 });
