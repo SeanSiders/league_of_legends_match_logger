@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <title>Matches</title>
-    <link rel='stylesheet' href='css/style.css' type='text/css'/>
+    <link rel='stylesheet' href='../css/style.css' type='text/css'/>
 </head>
 
 <header>
@@ -103,7 +103,7 @@
                 <td>-</td>
                 <td>-</td>
                 <td><%=match.match_duration_seconds%></td>
-                <td><a href="/matches/edit?id_match=<%=match.id_match%>">View/Edit</a></td>
+                <td><a href="/matches/edit/?id_match=<%=match.id_match%>">View/Edit</a></td>
                 <td><a href="/matches/delete/?id_match=<%=match.id_match%>">Delete</a></td>
             </tr>
             <tr>

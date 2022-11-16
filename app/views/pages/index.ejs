@@ -35,12 +35,16 @@
     <br>
     <p>View your favorite player</p>
     <form action='summoners' method='get'>
-        <input type='text'>
+        <select name="id_summoner" id="id_summoner" size='1'>
+            <% summoner.forEach(function(summoner) { %>
+                <option value=<%=summoner.id_summoner%>><%=summoner.id_summoner%></option>
+            <% }) %>
+        </select>
         <input type='submit'>
     </form>
     <br>
 
-    <p> View the most recent match history </p>
+    <p> View match history </p>
     <form action='matches' method='get'>
         <input type='submit'>
     </form>
