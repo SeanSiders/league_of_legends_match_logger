@@ -181,6 +181,35 @@ function createOrUpdateSummoner(riotID, summonerName) {
     );
 }
 
+function getSummoners() {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `SELECT id_summoner, name from summoners`,
+            (err, results) => {
+                if (err) return reject(err);
+                return resolve(results);
+            }
+            );
+        }
+    )
+}
+
+function getSummonerName(id_summ) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `SELECT name FROM summoners WHERE id_summoner = '${id_summ}'`,
+                (err, results) => {
+                    if (err) return reject(err);
+                    return resolve(results);
+                }
+            );
+        }
+    )
+}
+
+
 async function createOrUpdateSummoners(match) {
     await createOrUpdateSummoner(match.red_rid_1, match.red_summoner_1);
     await createOrUpdateSummoner(match.red_rid_2, match.red_summoner_2);
@@ -509,3 +538,5 @@ module.exports.getTeam = getTeam;
 module.exports.createMatch = createMatch;
 module.exports.deleteMatch = deleteMatch;
 module.exports.resetDatabase = resetDatabase;
+module.exports.getSummoners = getSummoners;
+module.exports.getSummonerName = getSummonerName;

@@ -29,7 +29,8 @@ app.listen(PORT, () => {
 
 app.get('/', async (req, res) => {
     res.render('pages/index', {
-        champions: await db.getChampionKeyValuePairs()
+        champions: await db.getChampionKeyValuePairs(),
+        summoner: await db.getSummoners()
     });
 });
 
@@ -116,7 +117,7 @@ app.get('/champions/delete', async (req, res) => {
 
 app.get('/create_match', async (req, res) => {
     res.render('pages/edit_match', {
-        champions: await db.getChampionKeyValuePairs()
+        champions: await db.getChampionKeyValuePairs(),
     });
 });
 
@@ -147,11 +148,17 @@ app.get('/matches/edit', async (req, res) => {
     });
 });
 
+app.post('')
+
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-app.get('/summoners', (req, res) => {
-    res.render('pages/summoners');
+app.get('/summoners', async (req, res) => {
+    console.log(req.query, await db.getSummonerName(req.query.id_summoner))
+    res.render('pages/summoners', {
+        name: await db.getSummonerName(req.query.id_summoner),
+        summ: req.query
+    });
 });
 
 app.get('/db_overview', (req, res) => {
