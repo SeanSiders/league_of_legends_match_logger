@@ -17,8 +17,7 @@
         <br>
         <h2>Welcome to <%= summ.id_summoner %>'s Information </h2>
         <p> Their full name is <%= nameTime[0].name %></p>
-        <p> Their last played champion is XYZ</p>
-        <p>Their last match was </p>
+        <p> Their last played champion is <%= champion[0].name %></p>
         <form action="matches" method="get">
             <input type="submit" method="get" action="match.html">
         </form>
