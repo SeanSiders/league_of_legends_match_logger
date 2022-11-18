@@ -16,6 +16,7 @@ app.use(express.urlencoded({
 
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, 'app')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/sql', express.static(path.join(__dirname, 'sql')));
 
@@ -141,7 +142,6 @@ app.get('/matches/delete', async (req, res) => {
 });
 
 app.get('/matches/edit', async (req, res) => {
-    console.log(await db.getMatch(req.query.id_match));
     res.render('pages/edit_match', {
         match: await db.getMatch(req.query.id_match),
         champions: await db.getChampionKeyValuePairs()
