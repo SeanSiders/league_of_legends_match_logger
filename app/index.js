@@ -31,15 +31,13 @@ app.listen(PORT, () => {
 app.get('/', async (req, res) => {
     res.render('pages/index', {
         champions: await db.getChampionKeyValuePairs(),
-        summoner: await db.getSummoners()
+        summoners: await db.getSummoners(),
     });
 });
 
 app.get('/reset_db', async (req, res) => {
     await db.resetDatabase();
-    res.render('pages/index', {
-        champions: await db.getChampionKeyValuePairs()
-    });
+    res.redirect('/');
 });
 
 // ---------------------------------------------------------------------------
@@ -116,8 +114,15 @@ app.get('/champions/delete', async (req, res) => {
 // MATCHES 
 // ---------------------------------------------------------------------------
 
+app.get('/matches', async (req, res) => {
+    res.render('pages/matches', {
+        matches: await db.getMatches()
+    });
+});
+
 app.get('/create_match', async (req, res) => {
     res.render('pages/edit_match', {
+        match: null,
         champions: await db.getChampionKeyValuePairs(),
     });
 });
@@ -125,27 +130,27 @@ app.get('/create_match', async (req, res) => {
 app.post('/create_match', async (req, res) => {
     await db.createMatch(req.body);
 
-    res.render('pages/matches', {
-        matches: await db.getMatches()
+    res.redirect('/matches');
+});
+
+app.get('/edit_match', async (req, res) => {
+    res.render('pages/edit_match', {
+        match: await db.getMatch(req.query.id_match),
+        champions: await db.getChampionKeyValuePairs()
     });
 });
 
-app.get('/matches', async (req, res) => {
-    res.render('pages/matches', {
-        matches: await db.getMatches()
-    });
+app.post('/update_match', async (req, res) => {
+    let match = req.body;
+    match.id_match = req.query.id_match;
+    console.log(match);
+    await db.updateMatch(match);
+    res.redirect('/matches');
 });
 
 app.get('/matches/delete', async (req, res) => {
     await db.deleteMatch(req.query.id_match);
     res.redirect('/matches');
-});
-
-app.get('/matches/edit', async (req, res) => {
-    res.render('pages/edit_match', {
-        match: await db.getMatch(req.query.id_match),
-        champions: await db.getChampionKeyValuePairs()
-    });
 });
 
 

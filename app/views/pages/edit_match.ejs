@@ -13,7 +13,7 @@
 </header>
 
 <body>
-    <form action='/create_match' method='POST'>
+    <form id='matchForm' action= <%= match == null ? '/create_match' : `/update_match?id_match=${match.id_match}` %> method='POST'>
 
         <table class='dataViewTable'>
             <tr>
@@ -28,93 +28,93 @@
             </tr>
             <tr>
                 <td>Red</td>
-                <td><input type='radio' id='red_win' value='red' name='winning_team' required></td>
-                <td><input type='number' id='red_gold' name='red_gold' placeholder=0 min=0></td>
+                <td><input type='radio' id='red_win' value='red' name='winning_team' required <% if (match != null && match.winning_team == 'red') { %> checked <% } %>></td>
+                <td><input type='number' id='red_gold' name='red_gold' placeholder=0 min=0 <% if (match != null) { %> value = <%= match.red_team.total_gold_earned %> <% } %>></td>
                 <td><select name='red_champion_1' id='red_champion_1'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[0].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
                 <td><select name='red_champion_2' id='red_champion_2'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[1].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
                 <td><select name='red_champion_3' id='red_champion_3'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[2].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
                 <td><select name='red_champion_4' id='red_champion_4'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[3].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
                 <td><select name='red_champion_5' id='red_champion_5'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[4].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type='text' placeholder='Riot ID' id = 'red_rid_1' name = 'red_rid_1' required></td>
-                <td><input type='text' placeholder='Riot ID' id = 'red_rid_2' name = 'red_rid_2' required></td>
-                <td><input type='text' placeholder='Riot ID' id = 'red_rid_3' name = 'red_rid_3' required></td>
-                <td><input type='text' placeholder='Riot ID' id = 'red_rid_4' name = 'red_rid_4' required></td>
-                <td><input type='text' placeholder='Riot ID' id = 'red_rid_5' name = 'red_rid_5' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_1' name = 'red_rid_1' required value = <%= match == null ? '' : match.red_team.played_champions[0].id_summoner %>></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_2' name = 'red_rid_2' required value = <%= match == null ? '' : match.red_team.played_champions[1].id_summoner %>></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_3' name = 'red_rid_3' required value = <%= match == null ? '' : match.red_team.played_champions[2].id_summoner %>></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_4' name = 'red_rid_4' required value = <%= match == null ? '' : match.red_team.played_champions[3].id_summoner %>></td>
+                <td><input type='text' placeholder='Riot ID' id = 'red_rid_5' name = 'red_rid_5' required value = <%= match == null ? '' : match.red_team.played_champions[4].id_summoner %>></td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_1', name = 'red_summoner_1'></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_2', name = 'red_summoner_2'></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_3', name = 'red_summoner_3'></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_4', name = 'red_summoner_4'></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_5', name = 'red_summoner_5'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_1' name = 'red_summoner_1' value = <%= match == null ? '' : match.red_team.played_champions[0].summoner_name %>></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_2' name = 'red_summoner_2' value = <%= match == null ? '' : match.red_team.played_champions[1].summoner_name %>></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_3' name = 'red_summoner_3' value = <%= match == null ? '' : match.red_team.played_champions[2].summoner_name %>></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_4' name = 'red_summoner_4' value = <%= match == null ? '' : match.red_team.played_champions[3].summoner_name %>></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'red_summoner_5' name = 'red_summoner_5' value = <%= match == null ? '' : match.red_team.played_champions[4].summoner_name %>></td>
             </tr>
             <tr>
                 <td>Blue</td>
-                <td><input type='radio' id='blue_win' value='blue' name='winning_team' required></td>
-                <td><input type='number' id='blue_gold' name='blue_gold' placeholder=0 min=0></td>
+                <td><input type='radio' id='blue_win' value='blue' name='winning_team' required <% if (match != null && match.winning_team == 'blue') { %> checked <% } %>></td>
+                <td><input type='number' id='blue_gold' name='blue_gold' placeholder=0 min=0 <% if (match != null) { %> value = <%= match.blue_team.total_gold_earned %> <% } %>></td>
                 <td><select name='blue_champion_1' id='blue_champion_1'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[0].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
                 <td><select name='blue_champion_2' id='blue_champion_2'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[1].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
                 <td><select name='blue_champion_3' id='blue_champion_3'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[2].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
                 <td><select name='blue_champion_4' id='blue_champion_4'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[3].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
                 <td><select name='blue_champion_5' id='blue_champion_5'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[4].champion_name) { %> selected <% } %>><%=champion.name%></option>
                     <% }) %>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_1' name = 'blue_rid_1' required></td>
-                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_2' name = 'blue_rid_2' required></td>
-                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_3' name = 'blue_rid_3' required></td>
-                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_4' name = 'blue_rid_4' required></td>
-                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_5' name = 'blue_rid_5' required></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_1' name = 'blue_rid_1' required value = <%= match == null ? '' : match.blue_team.played_champions[0].id_summoner %>></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_2' name = 'blue_rid_2' required value = <%= match == null ? '' : match.blue_team.played_champions[1].id_summoner %>></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_3' name = 'blue_rid_3' required value = <%= match == null ? '' : match.blue_team.played_champions[2].id_summoner %>></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_4' name = 'blue_rid_4' required value = <%= match == null ? '' : match.blue_team.played_champions[3].id_summoner %>></td>
+                <td><input type='text' placeholder='Riot ID' id = 'blue_rid_5' name = 'blue_rid_5' required value = <%= match == null ? '' : match.blue_team.played_champions[4].id_summoner %>></td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_1', name = 'blue_summoner_1'></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_2', name = 'blue_summoner_2'></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_3', name = 'blue_summoner_3'></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_4', name = 'blue_summoner_4'></td>
-                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_5', name = 'blue_summoner_5'></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_1' name = 'blue_summoner_1' value = <%= match == null ? '' : match.blue_team.played_champions[0].summoner_name %>></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_2' name = 'blue_summoner_2' value = <%= match == null ? '' : match.blue_team.played_champions[1].summoner_name %>></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_3' name = 'blue_summoner_3' value = <%= match == null ? '' : match.blue_team.played_champions[2].summoner_name %>></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_4' name = 'blue_summoner_4' value = <%= match == null ? '' : match.blue_team.played_champions[3].summoner_name %>></td>
+                <td><input type='text' placeholder='Summoner Name' id = 'blue_summoner_5' name = 'blue_summoner_5' value = <%= match == null ? '' : match.blue_team.played_champions[4].summoner_name %>></td>
             </tr>
         </table>
 
@@ -125,7 +125,7 @@
                 <th>Match Duration</th>
             </tr>
             <tr>
-                <td><input type='number' id='match_duration_seconds' name='match_duration_seconds' placeholder=0 min=0></td>
+                <td><input type='number' id='match_duration_seconds' name='match_duration_seconds' placeholder=0 min=0 <% if (match != null) { %> value = <%= match.match_duration_seconds %> <% } %>></td>
             </tr>
         </table>
 
@@ -139,5 +139,4 @@
 <footer>
     <h3>By Jeremy Steele and Sean Siders for CS 340</h3>
 </footer>
-
 </html>

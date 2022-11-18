@@ -36,7 +36,7 @@
     <p>View your favorite player</p>
     <form action='summoners' method='get'>
         <select name="id_summoner" id="id_summoner" size='1'>
-            <% summoner.forEach(function(summoner) { %>
+            <% summoners.forEach(function(summoner) { %>
                 <option value=<%=summoner.id_summoner%>><%=summoner.id_summoner%></option>
             <% }) %>
         </select>

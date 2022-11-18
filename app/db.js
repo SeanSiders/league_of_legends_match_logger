@@ -185,7 +185,7 @@ function getSummoners() {
     return new Promise(
         (resolve, reject) => {
             pool.query(
-                `SELECT id_summoner, name from summoners`,
+                `SELECT id_summoner, name FROM summoners`,
             (err, results) => {
                 if (err) return reject(err);
                 return resolve(results);
@@ -232,7 +232,12 @@ function getPlayedChampion(id_played_champion) {
     return new Promise(
         (resolve, reject) => {
             pool.query(
-                `SELECT champions.name AS champion_name, summoners.name AS summoner_name FROM played_champions
+                `SELECT 
+                champions.id_champion,
+                champions.name AS champion_name,
+                summoners.id_summoner,
+                summoners.name AS summoner_name
+                FROM played_champions
                 INNER JOIN champions ON champions.id_champion = played_champions.id_champion
                 INNER JOIN summoners ON summoners.id_summoner = played_champions.id_summoner
                 WHERE id_played_champion = ${id_played_champion}`,
@@ -240,7 +245,9 @@ function getPlayedChampion(id_played_champion) {
                     if (err) return reject(err);
                     if (playedChampion.length == 0) return resolve(null);
                     return resolve({
+                        id_champion: playedChampion[0].id_champion,
                         champion_name: playedChampion[0].champion_name,
+                        id_summoner: playedChampion[0].id_summoner,
                         summoner_name: playedChampion[0].summoner_name
                     });
                 }
@@ -394,6 +401,25 @@ async function createMatch(match) {
     );
 }
 
+async function updateMatch(match) {
+    await createOrUpdateSummoners(match);
+    // TODO update played champions and the teams
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `UPDATE matches SET
+                winning_team = '${match.winning_team}',
+                match_duration_seconds = ${match.match_duration_seconds}
+                WHERE id_match = ${match.id_match}`,
+                (err, results) => {
+                    if (err) return reject(err);
+                    return resolve(results);
+                }
+            );
+        }
+    );
+}
+
 function deleteMatch(id_match) {
     return new Promise(
         (resolve, reject) => {
@@ -536,6 +562,7 @@ module.exports.getMatches = getMatches;
 module.exports.getMatch = getMatch;
 module.exports.getTeam = getTeam;
 module.exports.createMatch = createMatch;
+module.exports.updateMatch = updateMatch;
 module.exports.deleteMatch = deleteMatch;
 module.exports.resetDatabase = resetDatabase;
 module.exports.getSummoners = getSummoners;
