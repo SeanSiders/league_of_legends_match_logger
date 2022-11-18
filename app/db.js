@@ -210,6 +210,24 @@ function getSummonerName(id_summ) {
 }
 
 
+function getSummonerChampion(id_summ) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `SELECT champions.name FROM champions 
+                INNER JOIN played_champions on played_champions.id_champion = champions.id_champion
+                INNER JOIN summoners on summoners.id_summoner = played_champions.id_summoner
+                WHERE summoners.id_summoner = '${id_summ}'`,
+                (err, results) => {
+                    if (err) return reject(err);
+                    return resolve(results);
+                }
+            );
+        }
+    )
+}
+
+
 async function createOrUpdateSummoners(match) {
     await createOrUpdateSummoner(match.red_rid_1, match.red_summoner_1);
     await createOrUpdateSummoner(match.red_rid_2, match.red_summoner_2);
@@ -540,3 +558,4 @@ module.exports.deleteMatch = deleteMatch;
 module.exports.resetDatabase = resetDatabase;
 module.exports.getSummoners = getSummoners;
 module.exports.getSummonerName = getSummonerName;
+module.exports.getSummonerChampion = getSummonerChampion;

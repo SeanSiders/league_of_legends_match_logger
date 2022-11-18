@@ -155,6 +155,7 @@ app.get('/matches/edit', async (req, res) => {
 app.get('/summoners', async (req, res) => {
     res.render('pages/summoners', {
         nameTime: await db.getSummonerName(req.query.id_summoner),
+        champion: await db.getSummonerChampion(req.query.id_summoner),
         summ: req.query
     });
 });
