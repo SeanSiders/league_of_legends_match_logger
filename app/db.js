@@ -251,6 +251,7 @@ function getPlayedChampion(id_played_champion) {
         (resolve, reject) => {
             pool.query(
                 `SELECT 
+                played_champions.id_played_champion,
                 champions.id_champion,
                 champions.name AS champion_name,
                 summoners.id_summoner,
@@ -263,6 +264,7 @@ function getPlayedChampion(id_played_champion) {
                     if (err) return reject(err);
                     if (playedChampion.length == 0) return resolve(null);
                     return resolve({
+                        id_played_champion: playedChampion[0].id_played_champion,
                         id_champion: playedChampion[0].id_champion,
                         champion_name: playedChampion[0].champion_name,
                         id_summoner: playedChampion[0].id_summoner,
@@ -352,6 +354,68 @@ function createPlayedChampion(playedChampon) {
     );
 }
 
+async function updatePlayedChampions(matchData) {
+    let match = await getMatch(matchData.id_match);
+    // Red
+    match.red_team.played_champions[0].id_summoner = matchData.red_rid_1;
+    match.red_team.played_champions[0].id_champion = matchData.red_champion_1;
+    await updatePlayedChampion(match.red_team.played_champions[0]);
+
+    match.red_team.played_champions[1].id_summoner = matchData.red_rid_2;
+    match.red_team.played_champions[1].id_champion = matchData.red_champion_2;
+    await updatePlayedChampion(match.red_team.played_champions[1]);
+
+    match.red_team.played_champions[2].id_summoner = matchData.red_rid_3;
+    match.red_team.played_champions[2].id_champion = matchData.red_champion_3;
+    await updatePlayedChampion(match.red_team.played_champions[2]);
+
+    match.red_team.played_champions[3].id_summoner = matchData.red_rid_4;
+    match.red_team.played_champions[3].id_champion = matchData.red_champion_4;
+    await updatePlayedChampion(match.red_team.played_champions[3]);
+
+    match.red_team.played_champions[4].id_summoner = matchData.red_rid_5;
+    match.red_team.played_champions[4].id_champion = matchData.red_champion_5;
+    await updatePlayedChampion(match.red_team.played_champions[4]);
+
+    // Blue 
+    match.blue_team.played_champions[0].id_summoner = matchData.blue_rid_1;
+    match.blue_team.played_champions[0].id_champion = matchData.blue_champion_1;
+    await updatePlayedChampion(match.blue_team.played_champions[0]);
+
+    match.blue_team.played_champions[1].id_summoner = matchData.blue_rid_2;
+    match.blue_team.played_champions[1].id_champion = matchData.blue_champion_2;
+    await updatePlayedChampion(match.blue_team.played_champions[1]);
+
+    match.blue_team.played_champions[2].id_summoner = matchData.blue_rid_3;
+    match.blue_team.played_champions[2].id_champion = matchData.blue_champion_3;
+    await updatePlayedChampion(match.blue_team.played_champions[2]);
+
+    match.blue_team.played_champions[3].id_summoner = matchData.blue_rid_4;
+    match.blue_team.played_champions[3].id_champion = matchData.blue_champion_4;
+    await updatePlayedChampion(match.blue_team.played_champions[3]);
+
+    match.blue_team.played_champions[4].id_summoner = matchData.blue_rid_5;
+    match.blue_team.played_champions[4].id_champion = matchData.blue_champion_5;
+    await updatePlayedChampion(match.blue_team.played_champions[4]);
+}
+
+function updatePlayedChampion(playedChampion) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `UPDATE played_champions SET 
+                id_champion = '${playedChampion.id_champion}',
+                id_summoner = '${playedChampion.id_summoner}'
+                WHERE id_played_champion = ${playedChampion.id_played_champion}`,
+                (err, results) => {
+                    if (err) return reject(err);
+                    return resolve(results);
+                }
+            );
+        }
+    );
+}
+
 // ---------------------------------------------------------------------------
 // MATCHES 
 // ---------------------------------------------------------------------------
@@ -421,7 +485,8 @@ async function createMatch(match) {
 
 async function updateMatch(match) {
     await createOrUpdateSummoners(match);
-    // TODO update played champions and the teams
+    await updatePlayedChampions(match);
+
     return new Promise(
         (resolve, reject) => {
             pool.query(

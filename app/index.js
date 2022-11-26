@@ -5,7 +5,7 @@ const path = require('path');
 const { match } = require('assert');
 
 const app = express();
-const PORT = 3039;
+const PORT = 3079;
 
 app.set('view engine', 'ejs');
 
@@ -55,7 +55,6 @@ app.get('/create_champion', (req, res) => {
 });
 
 app.post('/create_champion_sql', async (req, res) => {
-    console.log(req.body);
     try {
         await db.createChampion({
             id: req.body.champion_name,
@@ -143,7 +142,6 @@ app.get('/edit_match', async (req, res) => {
 app.post('/update_match', async (req, res) => {
     let match = req.body;
     match.id_match = req.query.id_match;
-    console.log(match);
     await db.updateMatch(match);
     res.redirect('/matches');
 });
