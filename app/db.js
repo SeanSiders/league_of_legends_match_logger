@@ -99,13 +99,51 @@ function getChampion(id_champion) {
     );
 }
 
-function createChampion(champion) {
+async function createChampion(champion) {
+    champion.id_skill_P = await createSkill({
+        'id_skill': champion.p,
+        'name': champion.p,
+        'description': champion.p_desc,
+    });
+    champion.id_skill_Q = await createSkill({
+        'id_skill': champion.q,
+        'name': champion.q,
+        'description': champion.q_desc,
+    });
+    champion.id_skill_W = await createSkill({
+        'id_skill': champion.w,
+        'name': champion.w,
+        'description': champion.w_desc,
+    });
+    champion.id_skill_E = await createSkill({
+        'id_skill': champion.e,
+        'name': champion.e,
+        'description': champion.e_desc,
+    });
+    champion.id_skill_R = await createSkill({
+        'id_skill': champion.r,
+        'name': champion.r,
+        'description': champion.r_desc,
+    });
+    console.log(champion);
     return new Promise(
         (resolve, reject) => {
             pool.query(
                 `INSERT INTO champions 
-                (id_champion, name, difficulty_level, ban_rate, pick_rate, win_rate, id_skill_P, id_skill_Q, id_skill_W, id_skill_E, id_skill_R
-                ) VALUES ('${champion.id}', '${champion.name}', '${champion.diff}', '${champion.ban}', '${champion.pick}', '${champion.win}', 56, 34, 23, 34, 67);`,
+                (id_champion, name, difficulty_level, ban_rate, pick_rate, win_rate, id_skill_P, id_skill_Q, id_skill_W, id_skill_E, id_skill_R)
+                VALUES (
+                    '${champion.name}',
+                    '${champion.name}',
+                    '${champion.difficulty_level}',
+                    ${champion.ban_rate},
+                    ${champion.pick_rate},
+                    ${champion.win_rate},
+                    ${champion.id_skill_P},
+                    ${champion.id_skill_Q},
+                    ${champion.id_skill_W},
+                    ${champion.id_skill_E},
+                    ${champion.id_skill_R}
+                );`,
             (err, result) => {
                 if (err) return reject(err);
                 return resolve(result);
@@ -146,6 +184,27 @@ function deleteChampion(id_champion) {
             );
         }
     );
+}
+
+// ---------------------------------------------------------------------------
+// SKILLS 
+// ---------------------------------------------------------------------------
+
+async function createSkill(skill) {
+    await new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `INSERT INTO skills (id_skill, name, description)
+                VALUES ('${skill.name}', '${skill.name}', '${skill.description}')`,
+                (err, result) => {
+                    if (err) return reject(err);
+                    return resolve(result);
+                }
+            );
+        }
+    );
+
+    return getLastInsertedRowID_AutoIncrement('skills', 'id_skill');
 }
 
 // ---------------------------------------------------------------------------

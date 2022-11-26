@@ -56,14 +56,7 @@ app.get('/create_champion', (req, res) => {
 
 app.post('/create_champion_sql', async (req, res) => {
     try {
-        await db.createChampion({
-            id: req.body.champion_name,
-            name: req.body.champion_name,
-            diff: req.body.difficulty_level,
-            ban: req.body.ban_rate,
-            pick: req.body.pick_rate,
-            win: req.body.win_rate
-        });
+        await db.createChampion(req.body);
         
         res.redirect('/champions');
 
