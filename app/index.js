@@ -146,15 +146,19 @@ app.get('/matches/delete', async (req, res) => {
 
 
 // ---------------------------------------------------------------------------
+// SUMMONERS
 // ---------------------------------------------------------------------------
 
 app.get('/summoners', async (req, res) => {
     res.render('pages/summoners', {
+        matches: await db.getSummonerMatches(req.query.id_summoner),
         nameTime: await db.getSummonerName(req.query.id_summoner),
         champion: await db.getSummonerChampion(req.query.id_summoner),
         summ: req.query
     });
 });
+
+// ---------------------------------------------------------------------------
 
 app.get('/db_overview', (req, res) => {
     res.render('pages/db_overview');

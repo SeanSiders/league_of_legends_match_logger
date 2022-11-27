@@ -501,6 +501,40 @@ function getMatches() {
     );
 }
 
+function getSummonerMatches(id_summoner) {
+    return new Promise(
+        (resolve, reject) => {
+            pool.query(
+                `SELECT * FROM matches
+                INNER JOIN teams ON 
+                (teams.id_team = matches.id_team_red OR teams.id_team = matches.id_team_blue)
+                    INNER JOIN played_champions ON (
+                        played_champions.id_played_champion = teams.id_played_champion_1 OR
+                        played_champions.id_played_champion = teams.id_played_champion_2 OR
+                        played_champions.id_played_champion = teams.id_played_champion_3 OR
+                        played_champions.id_played_champion = teams.id_played_champion_4 OR
+                        played_champions.id_played_champion = teams.id_played_champion_5
+                    ) 
+                        INNER JOIN summoners ON 
+                        summoners.id_summoner = played_champions.id_summoner AND
+                        summoners.id_summoner = '${id_summoner}'`,
+                async (err, matches) => {
+                    if (err) return reject(err);
+                    try {
+                        for (let match of matches) {
+                            match.red_team = await getTeam(match.id_team_red);
+                            match.blue_team = await getTeam(match.id_team_blue);
+                        }
+                        return resolve(matches);
+                    } catch (err) {
+                        return reject(err);
+                    }
+                }
+            );
+        }
+    );
+}
+
 function getMatch(id_match) {
     return new Promise(
         (resolve, reject) => {
@@ -710,3 +744,4 @@ module.exports.resetDatabase = resetDatabase;
 module.exports.getSummoners = getSummoners;
 module.exports.getSummonerName = getSummonerName;
 module.exports.getSummonerChampion = getSummonerChampion;
+module.exports.getSummonerMatches = getSummonerMatches;
