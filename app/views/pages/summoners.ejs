@@ -13,9 +13,16 @@
 </header>
 
 <body>
+    <br>
+    <h2>Welcome to <%= summ.id_summoner %>'s Information </h2>
+    <p> Their full name is <%= nameTime[0].name %></p>
+
+    <p> Their last played champion is <%= champion[0].name %></p>
+    
     <div id="entrance">
         <br>
-        <h2><%= summ.id_summoner %>'s Matches</h2>
+        <h2><%= summ.id_summoner %>'s Last played Match</h2>
+        <br>
     </div>
 
     <table class='dataViewTable'>
