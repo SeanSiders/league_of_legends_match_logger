@@ -55,16 +55,8 @@ app.get('/create_champion', (req, res) => {
 });
 
 app.post('/create_champion_sql', async (req, res) => {
-    console.log(req.body);
     try {
-        await db.createChampion({
-            id: req.body.champion_name,
-            name: req.body.champion_name,
-            diff: req.body.difficulty_level,
-            ban: req.body.ban_rate,
-            pick: req.body.pick_rate,
-            win: req.body.win_rate
-        });
+        await db.createChampion(req.body);
         
         res.redirect('/champions');
 
@@ -143,7 +135,6 @@ app.get('/edit_match', async (req, res) => {
 app.post('/update_match', async (req, res) => {
     let match = req.body;
     match.id_match = req.query.id_match;
-    console.log(match);
     await db.updateMatch(match);
     res.redirect('/matches');
 });
@@ -155,15 +146,19 @@ app.get('/matches/delete', async (req, res) => {
 
 
 // ---------------------------------------------------------------------------
+// SUMMONERS
 // ---------------------------------------------------------------------------
 
 app.get('/summoners', async (req, res) => {
     res.render('pages/summoners', {
+        matches: await db.getSummonerMatches(req.query.id_summoner),
         nameTime: await db.getSummonerName(req.query.id_summoner),
         champion: await db.getSummonerChampion(req.query.id_summoner),
         summ: req.query
     });
 });
+
+// ---------------------------------------------------------------------------
 
 app.get('/db_overview', (req, res) => {
     res.render('pages/db_overview');
