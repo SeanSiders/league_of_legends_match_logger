@@ -843,11 +843,18 @@ VALUES
 ('Gumayusi', 'Minhyung Lee'),
 ('Oner', 'Hyunjun Mun'),
 ('Keria', 'Minseok Ryu'),
-('Asper', 'Taeki Kim');
+('Asper', 'Taeki Kim'),
+('Jeremy', 'Jay St'),
+('Sean', 'Sean Side'),
+('Snoop', 'Snoop Dogg'),
+('2pac', 'Tupac Shakur'),
+('Biggie', 'Christopher Wallace');
 
--- BLUE TEAM
+-- Match 0
 INSERT INTO teams (total_gold_earned) VALUES (52387);
 SET @id_team_blue = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
+
+-- Blue Team
 
 INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker');
 UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
@@ -873,15 +880,15 @@ WHERE id_team = @id_team_blue;
 INSERT INTO teams (total_gold_earned) VALUES (29927);
 SET @id_team_red = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('akali', 'Asper');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('jax', 'Jeremy');
 UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('ahri', 'Keria');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('riven', 'Snoop');
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('teemo', 'Oner');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('rumble', 'Sean');
 UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
@@ -889,7 +896,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Gumay
 UPDATE teams SET id_played_champion_4 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('viktor', '2pac');
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 

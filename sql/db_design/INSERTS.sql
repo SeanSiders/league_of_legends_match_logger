@@ -695,7 +695,12 @@ VALUES
 ('Gumayusi', 'Minhyung Lee'),
 ('Oner', 'Hyunjun Mun'),
 ('Keria', 'Minseok Ryu'),
-('Asper', 'Taeki Kim');
+('Asper', 'Taeki Kim'),
+('Jeremy', 'Jay St'),
+('Sean', 'Sean Side'),
+('Snoop', 'Snoop Dogg'),
+('2pac', 'Tupac Shakur'),
+('Biggie', 'Christopher Wallace');
 
 -- BLUE TEAM
 INSERT INTO teams (total_gold_earned) VALUES (52387);

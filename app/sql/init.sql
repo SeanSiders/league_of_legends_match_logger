@@ -721,115 +721,115 @@ INSERT INTO skills (id_skill, name, description) VALUES
 (564, 'Rise of the Thorns', 'When Zyra dies, she briefly returns to her plant form. After 2 seconds, she can press any ability to fire a thorn toward her cursor, dealing true damage to each enemy it strikes.');
 
 INSERT INTO champions (id_champion, name, difficulty_level, ban_rate, pick_rate, win_rate, id_skill_P, id_skill_Q, id_skill_W, id_skill_E, id_skill_R) VALUES
-('ahri', 'Ahri', 'easy', 0.0, 0.0, 0.0, 1, 2, 3, 4, 5),
-('akali', 'Akali', 'easy', 0.0, 0.0, 0.0, 6, 7, 8, 9, 10),
-('alistar', 'Alistar', 'easy', 0.0, 0.0, 0.0, 11, 12, 13, 14, 15),
-('amumu', 'Amumu', 'easy', 0.0, 0.0, 0.0, 16, 17, 18, 19, 20),
-('anivia', 'Anivia', 'easy', 0.0, 0.0, 0.0, 21, 22, 23, 24, 25),
-('annie', 'Annie', 'easy', 0.0, 0.0, 0.0, 26, 27, 28, 29, 30),
-('ashe', 'Ashe', 'easy', 0.0, 0.0, 0.0, 31, 32, 33, 34, 35),
-('blitzcrank', 'Blitzcrank', 'easy', 0.0, 0.0, 0.0, 36, 37, 38, 39, 40),
-('brand', 'Brand', 'easy', 0.0, 0.0, 0.0, 41, 42, 43, 44, 45),
-('caitlyn', 'Caitlyn', 'easy', 0.0, 0.0, 0.0, 46, 47, 48, 49, 50),
-('cassiopeia', 'Cassiopeia', 'easy', 0.0, 0.0, 0.0, 51, 52, 53, 54, 55),
-('chogath', 'Cho''Gath', 'easy', 0.0, 0.0, 0.0, 56, 57, 58, 59, 60),
-('corki', 'Corki', 'easy', 0.0, 0.0, 0.0, 61, 62, 63, 64, 65),
-('darius', 'Darius', 'easy', 0.0, 0.0, 0.0, 66, 67, 68, 69, 70),
-('diana', 'Diana', 'easy', 0.0, 0.0, 0.0, 71, 72, 73, 74, 75),
-('draven', 'Draven', 'easy', 0.0, 0.0, 0.0, 81, 82, 83, 84, 85),
-('dr_mundo', 'Dr. Mundo', 'easy', 0.0, 0.0, 0.0, 76, 77, 78, 79, 80),
-('elise', 'Elise', 'easy', 0.0, 0.0, 0.0, 86, 87, 88, 89, 90),
-('evelynn', 'Evelynn', 'easy', 0.0, 0.0, 0.0, 91, 92, 93, 94, 95),
-('ezreal', 'Ezreal', 'easy', 0.0, 0.0, 0.0, 96, 97, 98, 99, 100),
-('fiddlesticks', 'Fiddlesticks', 'easy', 0.0, 0.0, 0.0, 101, 102, 103, 104, 105),
-('fiora', 'Fiora', 'easy', 0.0, 0.0, 0.0, 106, 107, 108, 109, 110),
-('fizz', 'Fizz', 'easy', 0.0, 0.0, 0.0, 111, 112, 113, 114, 115),
-('galio', 'Galio', 'easy', 0.0, 0.0, 0.0, 116, 117, 118, 119, 120),
-('gangplank', 'Gangplank', 'easy', 0.0, 0.0, 0.0, 121, 122, 123, 124, 125),
-('garen', 'Garen', 'easy', 0.0, 0.0, 0.0, 126, 127, 128, 129, 130),
-('gragas', 'Gragas', 'easy', 0.0, 0.0, 0.0, 131, 132, 133, 134, 135),
-('graves', 'Graves', 'easy', 0.0, 0.0, 0.0, 136, 137, 138, 139, 140),
-('hecarim', 'Hecarim', 'easy', 0.0, 0.0, 0.0, 141, 142, 143, 144, 145),
-('heimerdinger', 'Heimerdinger', 'easy', 0.0, 0.0, 0.0, 146, 147, 148, 149, 150),
-('irelia', 'Irelia', 'easy', 0.0, 0.0, 0.0, 151, 152, 153, 154, 155),
-('janna', 'Janna', 'easy', 0.0, 0.0, 0.0, 156, 157, 158, 159, 160),
-('jarvan_iv', 'Jarvan IV', 'easy', 0.0, 0.0, 0.0, 161, 162, 163, 164, 165),
-('jax', 'Jax', 'easy', 0.0, 0.0, 0.0, 166, 167, 168, 169, 170),
-('jayce', 'Jayce', 'easy', 0.0, 0.0, 0.0, 171, 172, 173, 174, 175),
-('karma', 'Karma', 'easy', 0.0, 0.0, 0.0, 180, 181, 182, 183, 184),
-('karthus', 'Karthus', 'easy', 0.0, 0.0, 0.0, 185, 186, 187, 188, 189),
-('kassadin', 'Kassadin', 'easy', 0.0, 0.0, 0.0, 190, 191, 192, 193, 194),
-('katarina', 'Katarina', 'easy', 0.0, 0.0, 0.0, 195, 196, 197, 198, 199),
-('kayle', 'Kayle', 'easy', 0.0, 0.0, 0.0, 200, 201, 202, 203, 204),
-('kennen', 'Kennen', 'easy', 0.0, 0.0, 0.0, 205, 206, 207, 208, 209),
-('khazix', 'Kha''Zix', 'easy', 0.0, 0.0, 0.0, 210, 211, 212, 213, 214),
-('kogmaw', 'Kog''Maw', 'easy', 0.0, 0.0, 0.0, 215, 216, 217, 218, 219),
-('leblanc', 'LeBlanc', 'easy', 0.0, 0.0, 0.0, 220, 221, 222, 223, 224),
-('lee_sin', 'Lee Sin', 'easy', 0.0, 0.0, 0.0, 225, 226, 227, 228, 229),
-('leona', 'Leona', 'easy', 0.0, 0.0, 0.0, 230, 231, 232, 233, 234),
-('lulu', 'Lulu', 'easy', 0.0, 0.0, 0.0, 235, 236, 237, 238, 239),
-('lux', 'Lux', 'easy', 0.0, 0.0, 0.0, 240, 241, 242, 243, 244),
-('malphite', 'Malphite', 'easy', 0.0, 0.0, 0.0, 245, 246, 247, 248, 249),
-('malzahar', 'Malzahar', 'easy', 0.0, 0.0, 0.0, 250, 251, 252, 253, 254),
-('maokai', 'Maokai', 'easy', 0.0, 0.0, 0.0, 255, 256, 257, 258, 259),
+('ahri', 'Ahri', 'easy', 2.0, 10.0, 49.0, 1, 2, 3, 4, 5),
+('akali', 'Akali', 'hard', 1.0, 3.0, 50.0, 6, 7, 8, 9, 10),
+('alistar', 'Alistar', 'medium', 4.0, 4.0, 52.0, 11, 12, 13, 14, 15),
+('amumu', 'Amumu', 'easy', 6.0, 88.0, 76.0, 16, 17, 18, 19, 20),
+('anivia', 'Anivia', 'easy', 8.0, 56.0, 46.0, 21, 22, 23, 24, 25),
+('annie', 'Annie', 'medium', 3.0, 22.0, 52.0, 26, 27, 28, 29, 30),
+('ashe', 'Ashe', 'easy', 2.0, 0.0, 51.0, 31, 32, 33, 34, 35),
+('blitzcrank', 'Blitzcrank', 'easy', 1.0, 2.0, 50.0, 36, 37, 38, 39, 40),
+('brand', 'Brand', 'hard', 5.0, 3.0, 45.0, 41, 42, 43, 44, 45),
+('caitlyn', 'Caitlyn', 'very hard', 2.0, 10.0, 53.0, 46, 47, 48, 49, 50),
+('cassiopeia', 'Cassiopeia', 'easy', 2.0, 3.0, 50.0, 51, 52, 53, 54, 55),
+('chogath', 'Cho''Gath', 'hard', 2.0, 4.0, 51.0, 56, 57, 58, 59, 60),
+('corki', 'Corki', 'easy', 3.0, 6.0, 53.0, 61, 62, 63, 64, 65),
+('darius', 'Darius', 'hard', 3.0, 4.0, 56.0, 66, 67, 68, 69, 70),
+('diana', 'Diana', 'easy', 5.0, 5.0, 56.0, 71, 72, 73, 74, 75),
+('draven', 'Draven', 'medium', 1.0, 3.0, 59.0, 81, 82, 83, 84, 85),
+('dr_mundo', 'Dr. Mundo', 'hard', 4.0, 5.0, 49.0, 76, 77, 78, 79, 80),
+('elise', 'Elise', 'easy', 3.0, 45.0, 57.0, 86, 87, 88, 89, 90),
+('evelynn', 'Evelynn', 'hard', 5.0, 5.0, 47.0, 91, 92, 93, 94, 95),
+('ezreal', 'Ezreal', 'easy', 5.0, 0.0, 45.0, 96, 97, 98, 99, 100),
+('fiddlesticks', 'Fiddlesticks', 'easy', 2.0, 3.0, 52.0, 101, 102, 103, 104, 105),
+('fiora', 'Fiora', 'medium', 5.0, 4.0, 56.0, 106, 107, 108, 109, 110),
+('fizz', 'Fizz', 'easy', 6.0, 8.0, 48.0, 111, 112, 113, 114, 115),
+('galio', 'Galio', 'easy', 0.0, 0.0, 47.0, 116, 117, 118, 119, 120),
+('gangplank', 'Gangplank', 'easy', 5.0, 10.0, 46.0, 121, 122, 123, 124, 125),
+('garen', 'Garen', 'easy', 2.0, 7.0, 53.0, 126, 127, 128, 129, 130),
+('gragas', 'Gragas', 'easy', 3.0, 5.0, 54.0, 131, 132, 133, 134, 135),
+('graves', 'Graves', 'easy', 7.0, 6.0, 53.0, 136, 137, 138, 139, 140),
+('hecarim', 'Hecarim', 'easy', 3.0, 4.0, 56.0, 141, 142, 143, 144, 145),
+('heimerdinger', 'Heimerdinger', 'easy', 4.0, 8.0, 51.0, 146, 147, 148, 149, 150),
+('irelia', 'Irelia', 'easy', 2.0, 3.0, 54.0, 151, 152, 153, 154, 155),
+('janna', 'Janna', 'easy', 4.0, 5.0, 54.0, 156, 157, 158, 159, 160),
+('jarvan_iv', 'Jarvan IV', 'easy', 1.0, 4.0, 43.0, 161, 162, 163, 164, 165),
+('jax', 'Jax', 'easy', 7.0, 3.0, 46.0, 166, 167, 168, 169, 170),
+('jayce', 'Jayce', 'extreme', 8.0, 4.0, 53.0, 171, 172, 173, 174, 175),
+('karma', 'Karma', 'easy', 2.0, 20.0, 57.0, 180, 181, 182, 183, 184),
+('karthus', 'Karthus', 'easy', 4.0, 3.0, 51.0, 185, 186, 187, 188, 189),
+('kassadin', 'Kassadin', 'easy', 4.0, 8.0, 49.0, 190, 191, 192, 193, 194),
+('katarina', 'Katarina', 'easy', 25.0, 10.0, 59.0, 195, 196, 197, 198, 199),
+('kayle', 'Kayle', 'easy', 5.0, 6.0, 51.0, 200, 201, 202, 203, 204),
+('kennen', 'Kennen', 'suicidal', 4.0, 3.0, 52.0, 205, 206, 207, 208, 209),
+('khazix', 'Kha''Zix', 'hard', 0.0, 0.0, 53.0, 210, 211, 212, 213, 214),
+('kogmaw', 'Kog''Maw', 'medium', 0.0, 0.0, 54.0, 215, 216, 217, 218, 219),
+('leblanc', 'LeBlanc', 'moderate', 1.0, 2.0, 47.0, 220, 221, 222, 223, 224),
+('lee_sin', 'Lee Sin', 'easy', 3.0, 0.0, 48.0, 225, 226, 227, 228, 229),
+('leona', 'Leona', 'easy', 3.0, 6.0, 49.0, 230, 231, 232, 233, 234),
+('lulu', 'Lulu', 'easy', 5.0, 2.0, 48.0, 235, 236, 237, 238, 239),
+('lux', 'Lux', 'unsure', 1.0, 2.0, 47.0, 240, 241, 242, 243, 244),
+('malphite', 'Malphite', 'easy', 10.0, 30.0, 50.0, 245, 246, 247, 248, 249),
+('malzahar', 'Malzahar', 'possible', 4.0, 2.0, 50.0, 250, 251, 252, 253, 254),
+('maokai', 'Maokai', 'easy', 2.0, 4.0, 5.0, 255, 256, 257, 258, 259),
 ('master_yi', 'Master Yi', 'easy', 0.0, 0.0, 0.0, 260, 261, 262, 263, 264),
 ('miss_fortune', 'Miss Fortune', 'easy', 0.0, 0.0, 0.0, 265, 266, 267, 268, 269),
-('mordekaiser', 'Mordekaiser', 'easy', 0.0, 0.0, 0.0, 270, 271, 272, 273, 274),
+('mordekaiser', 'Mordekaiser', 'impossible', 0.0, 0.0, 0.0, 270, 271, 272, 273, 274),
 ('morgana', 'Morgana', 'easy', 0.0, 0.0, 0.0, 275, 276, 277, 278, 279),
 ('nami', 'Nami', 'easy', 0.0, 0.0, 0.0, 280, 281, 282, 283, 284),
 ('nasus', 'Nasus', 'easy', 0.0, 0.0, 0.0, 285, 286, 287, 288, 289),
-('nautilus', 'Nautilus', 'easy', 0.0, 0.0, 0.0, 290, 291, 292, 293, 294),
+('nautilus', 'Nautilus', 'hard', 0.0, 0.0, 0.0, 290, 291, 292, 293, 294),
 ('nidalee', 'Nidalee', 'easy', 0.0, 0.0, 0.0, 295, 296, 297, 298, 299),
-('nocturne', 'Nocturne', 'easy', 0.0, 0.0, 0.0, 300, 301, 302, 303, 304),
-('nunu', 'Nunu', 'easy', 0.0, 0.0, 0.0, 305, 306, 307, 308, 309),
-('olaf', 'Olaf', 'easy', 0.0, 0.0, 0.0, 310, 311, 312, 313, 314),
-('orianna', 'Orianna', 'easy', 0.0, 0.0, 0.0, 315, 316, 317, 318, 319),
+('nocturne', 'Nocturne', 'theory', 0.0, 0.0, 0.0, 300, 301, 302, 303, 304),
+('nunu', 'Nunu', 'super easy', 0.0, 0.0, 0.0, 305, 306, 307, 308, 309),
+('olaf', 'Olaf', 'hard', 0.0, 0.0, 0.0, 310, 311, 312, 313, 314),
+('orianna', 'Orianna', 'medium', 0.0, 0.0, 0.0, 315, 316, 317, 318, 319),
 ('pantheon', 'Pantheon', 'easy', 0.0, 0.0, 0.0, 320, 321, 322, 323, 324),
 ('poppy', 'Poppy', 'easy', 0.0, 0.0, 0.0, 325, 326, 327, 328, 329),
 ('quinn', 'Quinn', 'easy', 0.0, 0.0, 0.0, 330, 331, 332, 333, 334),
-('rammus', 'Rammus', 'easy', 0.0, 0.0, 0.0, 335, 336, 337, 338, 339),
+('rammus', 'Rammus', 'hard', 0.0, 0.0, 0.0, 335, 336, 337, 338, 339),
 ('renekton', 'Renekton', 'easy', 0.0, 0.0, 0.0, 340, 341, 342, 343, 344),
 ('rengar', 'Rengar', 'easy', 0.0, 0.0, 0.0, 345, 346, 347, 348, 349),
 ('riven', 'Riven', 'easy', 0.0, 0.0, 0.0, 350, 351, 352, 353, 354),
-('rumble', 'Rumble', 'easy', 0.0, 0.0, 0.0, 355, 356, 357, 358, 359),
+('rumble', 'Rumble', 'possible', 0.0, 0.0, 0.0, 355, 356, 357, 358, 359),
 ('ryze', 'Ryze', 'easy', 0.0, 0.0, 0.0, 360, 361, 362, 363, 364),
-('sejuani', 'Sejuani', 'easy', 0.0, 0.0, 0.0, 365, 366, 367, 368, 369),
+('sejuani', 'Sejuani', 'impossible', 0.0, 0.0, 0.0, 365, 366, 367, 368, 369),
 ('shaco', 'Shaco', 'easy', 0.0, 0.0, 0.0, 370, 371, 372, 373, 374),
 ('shen', 'Shen', 'easy', 0.0, 0.0, 0.0, 375, 376, 377, 378, 379),
-('shyvana', 'Shyvana', 'easy', 0.0, 0.0, 0.0, 380, 381, 382, 383, 384),
+('shyvana', 'Shyvana', 'die now', 0.0, 0.0, 0.0, 380, 381, 382, 383, 384),
 ('singed', 'Singed', 'easy', 0.0, 0.0, 0.0, 385, 386, 387, 388, 389),
 ('sion', 'Sion', 'easy', 0.0, 0.0, 0.0, 390, 391, 392, 393, 394),
 ('sivir', 'Sivir', 'easy', 0.0, 0.0, 0.0, 395, 396, 397, 398, 399),
 ('skarner', 'Skarner', 'easy', 0.0, 0.0, 0.0, 400, 401, 402, 403, 404),
 ('sona', 'Sona', 'easy', 0.0, 0.0, 0.0, 405, 406, 407, 408, 409),
-('soraka', 'Soraka', 'easy', 0.0, 0.0, 0.0, 410, 411, 412, 413, 414),
+('soraka', 'Soraka', 'hard', 0.0, 0.0, 0.0, 410, 411, 412, 413, 414),
 ('swain', 'Swain', 'easy', 0.0, 0.0, 0.0, 415, 416, 417, 418, 419),
-('syndra', 'Syndra', 'easy', 0.0, 0.0, 0.0, 420, 421, 422, 423, 424),
+('syndra', 'Syndra', 'medium', 0.0, 0.0, 0.0, 420, 421, 422, 423, 424),
 ('talon', 'Talon', 'easy', 0.0, 0.0, 0.0, 425, 426, 427, 428, 429),
-('taric', 'Taric', 'easy', 0.0, 0.0, 0.0, 430, 431, 432, 433, 434),
+('taric', 'Taric', 'hard', 0.0, 0.0, 0.0, 430, 431, 432, 433, 434),
 ('teemo', 'Teemo', 'easy', 0.0, 0.0, 0.0, 435, 436, 437, 438, 439),
-('thresh', 'Thresh', 'easy', 0.0, 0.0, 0.0, 440, 441, 442, 443, 444),
+('thresh', 'Thresh', 'hard', 0.0, 0.0, 0.0, 440, 441, 442, 443, 444),
 ('tristana', 'Tristana', 'easy', 0.0, 0.0, 0.0, 445, 446, 447, 448, 449),
 ('trundle', 'Trundle', 'easy', 0.0, 0.0, 0.0, 450, 451, 452, 453, 454),
-('tryndamere', 'Tryndamere', 'easy', 0.0, 0.0, 0.0, 455, 456, 457, 458, 459),
-('twisted_fate', 'Twisted Fate', 'easy', 0.0, 0.0, 0.0, 460, 461, 462, 463, 464),
+('tryndamere', 'Tryndamere', 'impossible', 0.0, 0.0, 0.0, 455, 456, 457, 458, 459),
+('twisted_fate', 'Twisted Fate', 'crazy', 0.0, 0.0, 0.0, 460, 461, 462, 463, 464),
 ('twitch', 'Twitch', 'easy', 0.0, 0.0, 0.0, 465, 466, 467, 468, 469),
 ('udyr', 'Udyr', 'easy', 0.0, 0.0, 0.0, 470, 471, 472, 473, 474),
-('urgot', 'Urgot', 'easy', 0.0, 0.0, 0.0, 475, 476, 477, 478, 479),
-('varus', 'Varus', 'easy', 0.0, 0.0, 0.0, 480, 481, 482, 483, 484),
+('urgot', 'Urgot', 'medium', 0.0, 0.0, 0.0, 475, 476, 477, 478, 479),
+('varus', 'Varus', 'okay', 0.0, 0.0, 0.0, 480, 481, 482, 483, 484),
 ('vayne', 'Vayne', 'easy', 0.0, 0.0, 0.0, 485, 486, 487, 488, 489),
-('veigar', 'Veigar', 'easy', 0.0, 0.0, 0.0, 490, 491, 492, 493, 494),
+('veigar', 'Veigar', 'super easy', 0.0, 0.0, 0.0, 490, 491, 492, 493, 494),
 ('vi', 'Vi', 'easy', 0.0, 0.0, 0.0, 495, 496, 497, 498, 499),
 ('viktor', 'Viktor', 'easy', 0.0, 0.0, 0.0, 500, 501, 502, 503, 504),
-('vladimir', 'Vladimir', 'easy', 0.0, 0.0, 0.0, 505, 506, 507, 508, 509),
+('vladimir', 'Vladimir', 'tough', 0.0, 0.0, 0.0, 505, 506, 507, 508, 509),
 ('volibear', 'Volibear', 'easy', 0.0, 0.0, 0.0, 510, 511, 512, 513, 514),
 ('warwick', 'Warwick', 'easy', 0.0, 0.0, 0.0, 515, 516, 517, 518, 519),
 ('wukong', 'Wukong', 'easy', 0.0, 0.0, 0.0, 520, 521, 522, 523, 524),
 ('xerath', 'Xerath', 'easy', 0.0, 0.0, 0.0, 525, 526, 527, 528, 529),
 ('xin_zhao', 'Xin Zhao', 'easy', 0.0, 0.0, 0.0, 530, 531, 532, 533, 534),
-('yorick', 'Yorick', 'easy', 0.0, 0.0, 0.0, 535, 536, 537, 538, 539),
+('yorick', 'Yorick', 'crazy', 0.0, 0.0, 0.0, 535, 536, 537, 538, 539),
 ('zac', 'Zac', 'easy', 0.0, 0.0, 0.0, 540, 541, 542, 543, 544),
-('zed', 'Zed', 'easy', 0.0, 0.0, 0.0, 545, 546, 547, 548, 549),
+('zed', 'Zed', 'maybe', 0.0, 0.0, 0.0, 545, 546, 547, 548, 549),
 ('ziggs', 'Ziggs', 'easy', 0.0, 0.0, 0.0, 550, 551, 552, 553, 554),
 ('zilean', 'Zilean', 'easy', 0.0, 0.0, 0.0, 555, 556, 557, 558, 559),
 ('zyra', 'Zyra', 'easy', 0.0, 0.0, 0.0, 560, 561, 562, 563, 564);
@@ -843,7 +843,12 @@ VALUES
 ('Gumayusi', 'Minhyung Lee'),
 ('Oner', 'Hyunjun Mun'),
 ('Keria', 'Minseok Ryu'),
-('Asper', 'Taeki Kim');
+('Asper', 'Taeki Kim'),
+('Jeremy', 'Jay Steele'),
+('Sean', 'Sean Side'),
+('Snoop', 'Snoop Dogg'),
+('2pac', 'Tupac Shakur'),
+('Biggie', 'Christopher Wallace');
 
 -- BLUE TEAM
 INSERT INTO teams (total_gold_earned) VALUES (52387);
@@ -861,7 +866,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('teemo', 'Oner')
 UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('ahri', 'Keria');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('nunu', 'Keria');
 UPDATE teams SET id_played_champion_4 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
@@ -873,23 +878,23 @@ WHERE id_team = @id_team_blue;
 INSERT INTO teams (total_gold_earned) VALUES (29927);
 SET @id_team_red = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('akali', 'Asper');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fiddlesticks', 'Jeremy');
 UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('ahri', 'Keria');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('viktor', 'Sean');
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('teemo', 'Oner');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('thresh', '2pac');
 UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Gumayusi');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Biggie');
 UPDATE teams SET id_played_champion_4 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('darius', 'Snoop');
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
@@ -901,28 +906,28 @@ VALUES (@id_team_red, @id_team_blue, 'blue', 1721);
 INSERT INTO teams (total_gold_earned) VALUES (71433);
 SET @id_team_blue = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Gumayusi');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Biggie');
 UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Faker');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('brand', 'Sean');
 UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('teemo', 'Oner');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('skarner', 'Jeremy');
 UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('ahri', 'Asper');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('swain', '2pac');
 UPDATE teams SET id_played_champion_4 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('akali', 'Keria');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('trundle', 'Snoop');
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
 -- RED TEAM
-INSERT INTO teams (total_gold_earned) VALUES (90000);
+INSERT INTO teams (total_gold_earned) VALUES (86985);
 SET @id_team_red = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
 INSERT INTO played_champions (id_champion, id_summoner) VALUES ('akali', 'Asper');
@@ -941,7 +946,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Gumay
 UPDATE teams SET id_played_champion_4 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
-INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker');
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('cassiopeia', 'Faker');
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
@@ -949,9 +954,60 @@ WHERE id_team = @id_team_red;
 INSERT INTO matches (id_team_red, id_team_blue, winning_team, match_duration_seconds)
 VALUES (@id_team_red, @id_team_blue, 'red', 1699);
 
+-- RED TEAM
+
+INSERT INTO teams (total_gold_earned) VALUES (45567);
+SET @id_team_red = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('zed', 'Snoop');
+UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_red;
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('draven', 'Sean');
+UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_red;
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('lulu', 'Jeremy');
+UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_red;
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('ezreal', 'Gumayusi');
+UPDATE teams SET id_played_champion_4 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_red;
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('ziggs', '2pac');
+UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_red;
+
+-- Blue TEAM
+
+INSERT INTO teams (total_gold_earned) VALUES (71433);
+SET @id_team_blue = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('corki', 'Gumayusi');
+UPDATE teams SET id_played_champion_1 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_blue;
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('twitch', 'Faker');
+UPDATE teams SET id_played_champion_2 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_blue;
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('nidalee', 'Oner');
+UPDATE teams SET id_played_champion_3 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_blue;
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('quinn', 'Asper');
+UPDATE teams SET id_played_champion_4 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_blue;
+
+INSERT INTO played_champions (id_champion, id_summoner) VALUES ('pantheon', 'Keria');
+UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
+WHERE id_team = @id_team_blue;
+
 -- MATCH 3
 INSERT INTO matches (id_team_red, id_team_blue, winning_team, match_duration_seconds)
 VALUES (@id_team_red, @id_team_blue, 'blue', 1901);
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
