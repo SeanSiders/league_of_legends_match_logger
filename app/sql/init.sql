@@ -18,11 +18,11 @@ CREATE TABLE IF NOT EXISTS champions (
   ban_rate DECIMAL(5,2) NOT NULL,
   pick_rate DECIMAL(5,2) NOT NULL,
   win_rate DECIMAL(5,2) NOT NULL,
-  id_skill_P INT NOT NULL,
-  id_skill_Q INT NOT NULL,
-  id_skill_W INT NOT NULL,
-  id_skill_E INT NOT NULL,
-  id_skill_R INT NOT NULL,
+  id_skill_P INT NULL,
+  id_skill_Q INT NULL,
+  id_skill_W INT NULL,
+  id_skill_E INT NULL,
+  id_skill_R INT NULL,
   PRIMARY KEY (id_champion),
   INDEX fk_skill_P (id_skill_P ASC) VISIBLE,
   INDEX fk_skill_Q (id_skill_Q ASC) VISIBLE,
@@ -33,27 +33,27 @@ CREATE TABLE IF NOT EXISTS champions (
   CONSTRAINT fk_champions_skills1
     FOREIGN KEY (id_skill_P)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills2
     FOREIGN KEY (id_skill_Q)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills3
     FOREIGN KEY (id_skill_W)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills4
     FOREIGN KEY (id_skill_E)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills5
     FOREIGN KEY (id_skill_R)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -68,20 +68,20 @@ DEFAULT CHARACTER SET = DEFAULT;
 
 CREATE TABLE IF NOT EXISTS played_champions (
   id_played_champion INT NOT NULL AUTO_INCREMENT,
-  id_champion VARCHAR(45) NOT NULL,
-  id_summoner VARCHAR(45) NOT NULL,
+  id_champion VARCHAR(45) NULL,
+  id_summoner VARCHAR(45) NULL,
   PRIMARY KEY (id_played_champion),
   INDEX fk_champion (id_champion ASC) VISIBLE,
   INDEX fk_summoner (id_summoner ASC) VISIBLE,
   CONSTRAINT fk_id_champion
     FOREIGN KEY (id_champion)
     REFERENCES champions (id_champion)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_played_champions_summoners1
     FOREIGN KEY (id_summoner)
     REFERENCES summoners (id_summoner)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -98,32 +98,32 @@ CREATE TABLE IF NOT EXISTS teams (
   INDEX fk_played_champion_1 (id_played_champion_1 ASC) VISIBLE,
   INDEX fk_played_champion_2 (id_played_champion_2 ASC) VISIBLE,
   INDEX fk_played_champion_3 (id_played_champion_3 ASC) VISIBLE,
-  INDEX fk_played_champion_4 (id_played_champion_4 ASC) VISIBLE,
+  INDEX fk_played_champion_4 (id_played_champion_4 ASC, id_played_champion_5 ASC, id_played_champion_2 ASC, id_played_champion_3 ASC, id_played_champion_1 ASC) VISIBLE,
   INDEX fk_played_champion_5 (id_played_champion_5 ASC) VISIBLE,
   CONSTRAINT fk_teams_played_champions1
     FOREIGN KEY (id_played_champion_1)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions2
     FOREIGN KEY (id_played_champion_2)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions3
     FOREIGN KEY (id_played_champion_3)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions4
-    FOREIGN KEY (id_played_champion_4)
-    REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    FOREIGN KEY (id_played_champion_4 , id_played_champion_5 , id_played_champion_2 , id_played_champion_3 , id_played_champion_1)
+    REFERENCES played_champions (id_played_champion , id_played_champion , id_played_champion , id_played_champion , id_played_champion)
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions5
     FOREIGN KEY (id_played_champion_5)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -140,15 +140,17 @@ CREATE TABLE IF NOT EXISTS matches (
   CONSTRAINT fk_real_match_info_teams1
     FOREIGN KEY (id_team_red)
     REFERENCES teams (id_team)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT fk_real_match_info_teams2
     FOREIGN KEY (id_team_blue)
     REFERENCES teams (id_team)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+
+-- LEAGUE OF LEGENDS STATIC GAME DATA
 
 INSERT INTO skills (id_skill, name, description) VALUES
 (1, 'Orb of Deception', 'Ahri sends out and pulls back her orb, dealing magic damage on the way out and true damage on the way back.'),
@@ -832,6 +834,9 @@ INSERT INTO champions (id_champion, name, difficulty_level, ban_rate, pick_rate,
 ('zilean', 'Zilean', 'easy', 0.0, 0.0, 0.0, 555, 556, 557, 558, 559),
 ('zyra', 'Zyra', 'easy', 0.0, 0.0, 0.0, 560, 561, 562, 563, 564);
 
+-- SAMPLE DATA
+
+-- SUMMONERS
 INSERT INTO summoners (id_summoner, name)
 VALUES
 ('Faker', 'Sanghyeok Lee'),
@@ -840,6 +845,7 @@ VALUES
 ('Keria', 'Minseok Ryu'),
 ('Asper', 'Taeki Kim');
 
+-- BLUE TEAM
 INSERT INTO teams (total_gold_earned) VALUES (52387);
 SET @id_team_blue = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
@@ -863,6 +869,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('akali', 'Asper'
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
+-- RED TEAM
 INSERT INTO teams (total_gold_earned) VALUES (29927);
 SET @id_team_red = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
@@ -886,9 +893,11 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker')
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
+-- MATCH 1 
 INSERT INTO matches (id_team_red, id_team_blue, winning_team, match_duration_seconds)
 VALUES (@id_team_red, @id_team_blue, 'blue', 1721);
 
+-- BLUE TEAM
 INSERT INTO teams (total_gold_earned) VALUES (71433);
 SET @id_team_blue = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
@@ -912,6 +921,7 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('akali', 'Keria'
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_blue;
 
+-- RED TEAM
 INSERT INTO teams (total_gold_earned) VALUES (90000);
 SET @id_team_red = (SELECT id_team FROM teams ORDER BY id_team DESC LIMIT 1);
 
@@ -935,9 +945,11 @@ INSERT INTO played_champions (id_champion, id_summoner) VALUES ('fizz', 'Faker')
 UPDATE teams SET id_played_champion_5 = (SELECT id_played_champion from played_champions ORDER BY id_played_champion DESC LIMIT 1)
 WHERE id_team = @id_team_red;
 
+-- MATCH 2 
 INSERT INTO matches (id_team_red, id_team_blue, winning_team, match_duration_seconds)
 VALUES (@id_team_red, @id_team_blue, 'red', 1699);
 
+-- MATCH 3
 INSERT INTO matches (id_team_red, id_team_blue, winning_team, match_duration_seconds)
 VALUES (@id_team_red, @id_team_blue, 'blue', 1901);
 

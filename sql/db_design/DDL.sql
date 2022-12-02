@@ -18,11 +18,11 @@ CREATE TABLE IF NOT EXISTS champions (
   ban_rate DECIMAL(5,2) NOT NULL,
   pick_rate DECIMAL(5,2) NOT NULL,
   win_rate DECIMAL(5,2) NOT NULL,
-  id_skill_P INT NOT NULL,
-  id_skill_Q INT NOT NULL,
-  id_skill_W INT NOT NULL,
-  id_skill_E INT NOT NULL,
-  id_skill_R INT NOT NULL,
+  id_skill_P INT NULL,
+  id_skill_Q INT NULL,
+  id_skill_W INT NULL,
+  id_skill_E INT NULL,
+  id_skill_R INT NULL,
   PRIMARY KEY (id_champion),
   INDEX fk_skill_P (id_skill_P ASC) VISIBLE,
   INDEX fk_skill_Q (id_skill_Q ASC) VISIBLE,
@@ -33,27 +33,27 @@ CREATE TABLE IF NOT EXISTS champions (
   CONSTRAINT fk_champions_skills1
     FOREIGN KEY (id_skill_P)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills2
     FOREIGN KEY (id_skill_Q)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills3
     FOREIGN KEY (id_skill_W)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills4
     FOREIGN KEY (id_skill_E)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_champions_skills5
     FOREIGN KEY (id_skill_R)
     REFERENCES skills (id_skill)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -68,20 +68,20 @@ DEFAULT CHARACTER SET = DEFAULT;
 
 CREATE TABLE IF NOT EXISTS played_champions (
   id_played_champion INT NOT NULL AUTO_INCREMENT,
-  id_champion VARCHAR(45) NOT NULL,
-  id_summoner VARCHAR(45) NOT NULL,
+  id_champion VARCHAR(45) NULL,
+  id_summoner VARCHAR(45) NULL,
   PRIMARY KEY (id_played_champion),
   INDEX fk_champion (id_champion ASC) VISIBLE,
   INDEX fk_summoner (id_summoner ASC) VISIBLE,
   CONSTRAINT fk_id_champion
     FOREIGN KEY (id_champion)
     REFERENCES champions (id_champion)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_played_champions_summoners1
     FOREIGN KEY (id_summoner)
     REFERENCES summoners (id_summoner)
-    ON DELETE NO ACTION
+    ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -98,32 +98,32 @@ CREATE TABLE IF NOT EXISTS teams (
   INDEX fk_played_champion_1 (id_played_champion_1 ASC) VISIBLE,
   INDEX fk_played_champion_2 (id_played_champion_2 ASC) VISIBLE,
   INDEX fk_played_champion_3 (id_played_champion_3 ASC) VISIBLE,
-  INDEX fk_played_champion_4 (id_played_champion_4 ASC) VISIBLE,
+  INDEX fk_played_champion_4 (id_played_champion_4 ASC, id_played_champion_5 ASC, id_played_champion_2 ASC, id_played_champion_3 ASC, id_played_champion_1 ASC) VISIBLE,
   INDEX fk_played_champion_5 (id_played_champion_5 ASC) VISIBLE,
   CONSTRAINT fk_teams_played_champions1
     FOREIGN KEY (id_played_champion_1)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions2
     FOREIGN KEY (id_played_champion_2)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions3
     FOREIGN KEY (id_played_champion_3)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions4
-    FOREIGN KEY (id_played_champion_4)
-    REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    FOREIGN KEY (id_played_champion_4 , id_played_champion_5 , id_played_champion_2 , id_played_champion_3 , id_played_champion_1)
+    REFERENCES played_champions (id_played_champion , id_played_champion , id_played_champion , id_played_champion , id_played_champion)
+    ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions5
     FOREIGN KEY (id_played_champion_5)
     REFERENCES played_champions (id_played_champion)
-    ON DELETE CASCADE
+    ON DELETE SET NULL
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -140,14 +140,15 @@ CREATE TABLE IF NOT EXISTS matches (
   CONSTRAINT fk_real_match_info_teams1
     FOREIGN KEY (id_team_red)
     REFERENCES teams (id_team)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT fk_real_match_info_teams2
     FOREIGN KEY (id_team_blue)
     REFERENCES teams (id_team)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
+
 
 -- LEAGUE OF LEGENDS STATIC GAME DATA
 
