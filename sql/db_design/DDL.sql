@@ -116,8 +116,8 @@ CREATE TABLE IF NOT EXISTS teams (
     ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions4
-    FOREIGN KEY (id_played_champion_4 , id_played_champion_5 , id_played_champion_2 , id_played_champion_3 , id_played_champion_1)
-    REFERENCES played_champions (id_played_champion , id_played_champion , id_played_champion , id_played_champion , id_played_champion)
+    FOREIGN KEY (id_played_champion_4)
+    REFERENCES played_champions (id_played_champion)
     ON DELETE SET NULL
     ON UPDATE CASCADE,
   CONSTRAINT fk_teams_played_champions5
