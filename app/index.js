@@ -5,7 +5,7 @@ const path = require('path');
 const { match } = require('assert');
 
 const app = express();
-const PORT = 8174;
+const PORT = 7766;
 
 app.set('view engine', 'ejs');
 
