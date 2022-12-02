@@ -125,7 +125,7 @@ async function createChampion(champion) {
         'name': champion.r,
         'description': champion.r_desc,
     });
-    console.log(champion);
+
     return new Promise(
         (resolve, reject) => {
             pool.query(
@@ -319,16 +319,25 @@ function getPlayedChampion(id_played_champion) {
                 INNER JOIN champions ON champions.id_champion = played_champions.id_champion
                 INNER JOIN summoners ON summoners.id_summoner = played_champions.id_summoner
                 WHERE id_played_champion = ${id_played_champion}`,
-                (err, playedChampion) => {
+                (err, result) => {
                     if (err) return reject(err);
-                    if (playedChampion.length == 0) return resolve(null);
-                    return resolve({
-                        id_played_champion: playedChampion[0].id_played_champion,
-                        id_champion: playedChampion[0].id_champion,
-                        champion_name: playedChampion[0].champion_name,
-                        id_summoner: playedChampion[0].id_summoner,
-                        summoner_name: playedChampion[0].summoner_name
-                    });
+                    if (result.length == 0) return resolve({});
+
+                    let playedChampion = {
+                        id_played_champion: result[0].id_played_champion,
+                        id_champion: result[0].id_champion,
+                        champion_name: result[0].champion_name,
+                        id_summoner: result[0].id_summoner,
+                        summoner_name: result[0].summoner_name
+                    };
+
+                    if (playedChampion.id_champion == null) playedChampion.id_champion = '';
+                    if (playedChampion.champion_name == null) playedChampion.champion_name = '';
+
+                    if (playedChampion.id_summoner == null) playedChampion.id_summoner = '';
+                    if (playedChampion.summoner_name == null) playedChampion.summoner_name = '';
+
+                    return resolve(playedChampion);
                 }
             );
         }
@@ -501,7 +510,7 @@ function getMatches() {
     );
 }
 
-function getSummonerMatches(id_summoner) {
+function getLastSummonerMatch(id_summoner) {
     return new Promise(
         (resolve, reject) => {
             pool.query(
@@ -517,7 +526,8 @@ function getSummonerMatches(id_summoner) {
                     ) 
                         INNER JOIN summoners ON 
                         summoners.id_summoner = played_champions.id_summoner AND
-                        summoners.id_summoner = '${id_summoner}'`,
+                        summoners.id_summoner = '${id_summoner}'
+                ORDER BY id_match DESC LIMIT 1`,
                 async (err, matches) => {
                     if (err) return reject(err);
                     try {
@@ -625,21 +635,21 @@ function getTeam(id_team) {
 
                     // Populate up to 5 played champions for this team
                     team.played_champions = [5];
-                    if (team.id_played_champion_1) {
+                    if (team.id_played_champion_1 != null) {
                         team.played_champions[0] = await getPlayedChampion(team.id_played_champion_1);
-                    }
-                    if (team.id_played_champion_2) {
+                    } 
+                    if (team.id_played_champion_2 != null) {
                         team.played_champions[1] = await getPlayedChampion(team.id_played_champion_2);
-                    }
-                    if (team.id_played_champion_3) {
+                    } 
+                    if (team.id_played_champion_3 != null) {
                         team.played_champions[2] = await getPlayedChampion(team.id_played_champion_3);
-                    }
-                    if (team.id_played_champion_4) {
+                    } 
+                    if (team.id_played_champion_4 != null) {
                         team.played_champions[3] = await getPlayedChampion(team.id_played_champion_4);
-                    }
-                    if (team.id_played_champion_5) {
+                    } 
+                    if (team.id_played_champion_5 != null) {
                         team.played_champions[4] = await getPlayedChampion(team.id_played_champion_5);
-                    }
+                    } 
 
                     return resolve(team);
                 }
@@ -744,4 +754,4 @@ module.exports.resetDatabase = resetDatabase;
 module.exports.getSummoners = getSummoners;
 module.exports.getSummonerName = getSummonerName;
 module.exports.getSummonerChampion = getSummonerChampion;
-module.exports.getSummonerMatches = getSummonerMatches;
+module.exports.getSummonerMatches = getLastSummonerMatch;

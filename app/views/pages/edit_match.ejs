@@ -32,23 +32,43 @@
                 <td><input type='number' id='red_gold' name='red_gold' placeholder=0 min=0 <% if (match != null) { %> value = <%= match.red_team.total_gold_earned %> <% } %>></td>
                 <td><select name='red_champion_1' id='red_champion_1'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[0].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.red_team.played_champions[0] && champion.name == match.red_team.played_champions[0].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
                 <td><select name='red_champion_2' id='red_champion_2'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[1].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.red_team.played_champions[1] && champion.name == match.red_team.played_champions[1].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
                 <td><select name='red_champion_3' id='red_champion_3'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[2].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.red_team.played_champions[2] && champion.name == match.red_team.played_champions[2].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
                 <td><select name='red_champion_4' id='red_champion_4'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[3].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.red_team.played_champions[3] && champion.name == match.red_team.played_champions[3].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
                 <td><select name='red_champion_5' id='red_champion_5'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.red_team.played_champions[4].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.red_team.played_champions[4] && champion.name == match.red_team.played_champions[4].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
             </tr>
             <tr>
@@ -77,23 +97,43 @@
                 <td><input type='number' id='blue_gold' name='blue_gold' placeholder=0 min=0 <% if (match != null) { %> value = <%= match.blue_team.total_gold_earned %> <% } %>></td>
                 <td><select name='blue_champion_1' id='blue_champion_1'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[0].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.blue_team.played_champions[0] && champion.name == match.blue_team.played_champions[0].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
                 <td><select name='blue_champion_2' id='blue_champion_2'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[1].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.blue_team.played_champions[1] && champion.name == match.blue_team.played_champions[1].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
                 <td><select name='blue_champion_3' id='blue_champion_3'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[2].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.blue_team.played_champions[2] && champion.name == match.blue_team.played_champions[2].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
                 <td><select name='blue_champion_4' id='blue_champion_4'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[3].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.blue_team.played_champions[3] && champion.name == match.blue_team.played_champions[3].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
                 <td><select name='blue_champion_5' id='blue_champion_5'>
                     <% champions.forEach(function(champion) { %>
-                        <option value=<%=champion.id_champion%> <% if (match != null && champion.name == match.blue_team.played_champions[4].champion_name) { %> selected <% } %>><%=champion.name%></option>
+                        <% if (match && match.blue_team.played_champions[4] && champion.name == match.blue_team.played_champions[4].champion_name) { %>
+                            <option value=<%=champion.id_champion%> selected><%=champion.name%></option>
+                        <% } else { %>
+                            <option value=<%=champion.id_champion%>><%=champion.name%></option>
+                        <% } %>
                     <% }) %>
             </tr>
             <tr>
