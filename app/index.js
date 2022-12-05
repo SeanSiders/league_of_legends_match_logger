@@ -1,4 +1,7 @@
 'use strict';
+
+// All work on this project has been written entirely by Sean Siders and Jeremy Steele for CS 340's final project
+
 const express = require('express');
 const db = require('./db');
 const path = require('path');

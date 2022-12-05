@@ -1,7 +1,7 @@
 'use strict';
 
-const user = 'siderss';
-const password = '7107';
+const user = '';
+const password = '';
 
 // Get an instance of mysql we can use in the app
 const mysql = require('mysql');
